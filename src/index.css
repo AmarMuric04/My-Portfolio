@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@layer base {
+  ::selection {
+    @apply bg-[#697565] text-white;
+  }
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+.showAnimation {
+  animation: show forwards 1s ease-in-out;
+}
+
+.gradient {
+  background: linear-gradient(180deg, #1e201e, #262825);
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px rgba(100, 200, 255, 0.8),
+      0 0 10px rgba(100, 200, 255, 0.8), 0 0 20px rgba(100, 200, 255, 0.8);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(100, 200, 255, 0.4),
+      0 0 20px rgba(100, 200, 255, 0.4), 0 0 30px rgba(100, 200, 255, 0.4);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(100, 200, 255, 0.8),
+      0 0 10px rgba(100, 200, 255, 0.8), 0 0 20px rgba(100, 200, 255, 0.8);
+  }
+}
