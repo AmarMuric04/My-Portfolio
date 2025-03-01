@@ -1,6 +1,15 @@
 
 # Amar Murić - Fullstack Software Engineer
 
+![MERN Stack](https://img.shields.io/badge/MERN-Stack-blue)
+![React](https://img.shields.io/badge/React-18.x-blue)
+![Node.js](https://img.shields.io/badge/Node.js-18.x-green)
+![MongoDB](https://img.shields.io/badge/MongoDB-6.x-green)
+![Express.js](https://img.shields.io/badge/Express.js-4.x-lightgrey)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-blueviolet)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Open Source](https://img.shields.io/badge/Open%20Source-Yes-brightgreen)
+
 👋 Hi there! I'm **Amar Murić**, a 20-year-old full-stack developer based in Serbia. I specialize in building polished, impactful, and innovative products using modern web technologies. My primary stack is the **MERN (MongoDB, Express.js, React, Node.js)** ecosystem, but I’m always exploring new tools and frameworks to push the boundaries of what’s possible on the web.
 
 ---
