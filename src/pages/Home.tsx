@@ -2,9 +2,12 @@ import Myself from "/myself.webp";
 import UnhideText from "../components/buttons/UnhideText";
 import { GithubSVG, LinkedInSVG, MailSVG } from "../assets/svgs";
 import { Helmet } from "react-helmet";
-import React from "react";
+import React, { useState } from "react";
+import ActionButton from "../components/buttons/ActionButton";
 
 const Home: React.FC = () => {
+  const [showMore, setShowMore] = useState(false);
+
   return (
     <>
       <Helmet>
@@ -41,37 +44,40 @@ const Home: React.FC = () => {
           </p>
         </div>
       </section>
+
       <section className="my-8 sm:text-lg leading-8">
-        I’m a 20-year-old full-stack developer with a deep passion for building
-        polished, impactful, and innovative products. My journey into
-        programming began in 2022-2023
-        <UnhideText>
-          , and it’s been an exhilarating ride ever since
+        <p>
+          I’m a 20-year-old full-stack developer with a deep passion for
+          building polished, impactful, and innovative products. My journey into
+          programming began in 2022-2023
           <UnhideText>
-            , captivated by the art of creating beautiful and responsive user
-            interfaces
+            , and it’s been an exhilarating ride ever since
+            <UnhideText>
+              , captivated by the art of creating beautiful and responsive user
+              interfaces
+            </UnhideText>
           </UnhideText>
-        </UnhideText>
-        , but my curiosity quickly led me to explore the backend, databases, and
-        DevOps, transforming me into a well-rounded full-stack developer.
-        <strong>
-          <em>
-            {" "}
-            My primary stack is the MERN (MongoDB, Express.js, React, Node.js)
-          </em>
-        </strong>{" "}
-        ecosystem{" "}
-        <UnhideText>
-          but I’m always experimenting with modern tools like{" "}
+          , but my curiosity quickly led me to explore the backend, databases,
+          and DevOps, transforming me into a well-rounded full-stack developer.
           <strong>
-            {" "}
-            Next.js for server-side rendering, WebSocket for real-time
-            communication
-          </strong>
-          , and other cutting-edge technologies that push the boundaries of
-          what’s possible on the web
-        </UnhideText>
-        .
+            <em>
+              {" "}
+              My primary stack is the MERN (MongoDB, Express.js, React, Node.js)
+            </em>
+          </strong>{" "}
+          ecosystem{" "}
+          <UnhideText>
+            but I’m always experimenting with modern tools like{" "}
+            <strong>
+              {" "}
+              Next.js for server-side rendering, WebSocket for real-time
+              communication
+            </strong>
+            , and other cutting-edge technologies that push the boundaries of
+            what’s possible on the web
+          </UnhideText>
+          .
+        </p>
         <p className="mt-4">
           <UnhideText>
             {"Although I don’t have formal work experience yet, "}
@@ -91,53 +97,68 @@ const Home: React.FC = () => {
           frameworks, libraries, and tools to expand my skill set and stay ahead
           in the ever-evolving tech landscape.
         </p>
-        <p className="mt-4">
-          So far, I’ve built a variety of projects
-          <UnhideText>
-            , from dynamic web applications and e-commerce platforms to
-            real-time chat systems and interactive dashboards
-          </UnhideText>
-          . Each project has been a learning experience, helping me refine my
-          <strong> problem-solving skills</strong> and deepen my understanding
-          of the full development lifecycle.{" "}
-          <UnhideText>
-            I’m particularly fascinated by the intersection of design and
-            technology, and
-          </UnhideText>{" "}
-          I strive to create products that are <em>not</em>{" "}
-          <strong>
-            only functional and performant but also visually appealing,
-            accessible, and user-friendly
-          </strong>
-          .{" "}
-          <UnhideText>
-            I believe that great software is a{" "}
-            <strong>blend of technical excellence and thoughtful design</strong>
-            .
-          </UnhideText>
-        </p>
-        <p className="mt-4">
-          While I’m still early in my career, I’m incredibly excited about the
-          future and the opportunities to{" "}
-          <UnhideText>
-            grow <UnhideText>, collaborate,</UnhideText> and
-          </UnhideText>{" "}
-          make a meaningful impact in the tech world. I’m always{" "}
-          <strong>
-            eager to learn, share knowledge, and connect with like-minded
-            developers
-          </strong>{" "}
-          who are passionate about building cool things and solving real-world
-          problems.{" "}
-          <UnhideText>
-            Whether it’s through open-source contributions, hackathons, or
-            personal projects,{" "}
-            <UnhideText>
-              I’m committed to continuously improving my craft and contributing
-              to the developer community in meaningful ways.
-            </UnhideText>
-          </UnhideText>
-        </p>
+        {!showMore && (
+          <ActionButton
+            action={() => setShowMore(true)}
+            classes="text-sm px-2 py-1 my-4"
+          >
+            Click to view more
+          </ActionButton>
+        )}
+        {showMore && (
+          <>
+            <p className="mt-4">
+              So far, I’ve built a variety of projects
+              <UnhideText>
+                , from dynamic web applications and e-commerce platforms to
+                real-time chat systems and interactive dashboards
+              </UnhideText>
+              . Each project has been a learning experience, helping me refine
+              my
+              <strong> problem-solving skills</strong> and deepen my
+              understanding of the full development lifecycle.{" "}
+              <UnhideText>
+                I’m particularly fascinated by the intersection of design and
+                technology, and
+              </UnhideText>{" "}
+              I strive to create products that are <em>not</em>{" "}
+              <strong>
+                only functional and performant but also visually appealing,
+                accessible, and user-friendly
+              </strong>
+              .{" "}
+              <UnhideText>
+                I believe that great software is a{" "}
+                <strong>
+                  blend of technical excellence and thoughtful design
+                </strong>
+                .
+              </UnhideText>
+            </p>
+            <p className="mt-4">
+              While I’m still early in my career, I’m incredibly excited about
+              the future and the opportunities to{" "}
+              <UnhideText>
+                grow <UnhideText>, collaborate,</UnhideText> and
+              </UnhideText>{" "}
+              make a meaningful impact in the tech world. I’m always{" "}
+              <strong>
+                eager to learn, share knowledge, and connect with like-minded
+                developers
+              </strong>{" "}
+              who are passionate about building cool things and solving
+              real-world problems.{" "}
+              <UnhideText>
+                Whether it’s through open-source contributions, hackathons, or
+                personal projects,{" "}
+                <UnhideText>
+                  I’m committed to continuously improving my craft and
+                  contributing to the developer community in meaningful ways.
+                </UnhideText>
+              </UnhideText>
+            </p>
+          </>
+        )}
       </section>
       <section className="flex items-center gap-8 flex-wrap">
         <a

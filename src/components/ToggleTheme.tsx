@@ -14,15 +14,16 @@ const Toggle: React.FC<ToggleProps> = ({
   classes,
 }) => {
   return (
-    <button
-      onClick={handleChange}
-      className={`transition-all border-2 theme-surface-border shadow-md cursor-pointer place-items-center theme-background rounded-full ${classes}`}
-    >
-      <div className="scale-125 mt-1">
-        {/* @ts-expect-error Doesn't support React 19 so it will send errors. */}
-        <Around forceMotion toggled={isChecked} duration={300} />
-      </div>
-    </button>
+    <>
+      {/* @ts-expect-error Doesn't support React 19 so it will send errors. */}
+      <Around
+        className={`transition-all border-2 theme-surface-border shadow-md cursor-pointer place-items-center theme-background rounded-full ${classes}`}
+        forceMotion
+        toggle={handleChange}
+        toggled={isChecked}
+        duration={300}
+      />
+    </>
   );
 };
 
