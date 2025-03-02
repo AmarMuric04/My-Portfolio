@@ -24,9 +24,10 @@ const Home: React.FC = () => {
         />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/portfolio-logo.png" />
+        <link rel="preload" as="image" href="/myself.webp" />
       </Helmet>
 
-      <div className="flex flex-col text-center sm:flex-row sm:text-start items-center gap-4 mt-8">
+      <section className="flex flex-col text-center sm:flex-row sm:text-start items-center gap-4 mt-8">
         <img
           className="h-[3rem] w-[3rem] sm:h-[5rem] sm:w-[5rem] rounded-full"
           src={Myself}
@@ -40,108 +41,52 @@ const Home: React.FC = () => {
             Fullstack Software Engineer based in Serbia
           </p>
         </div>
-      </div>
-      <div className="my-8 sm:text-lg leading-8">
+      </section>
+
+      <section className="my-8 sm:text-lg leading-8">
         I’m a 20-year-old full-stack developer with a deep passion for building
         polished, impactful, and innovative products. My journey into
         programming began in 2022-2023
         <UnhideText>
-          , and it’s been an exhilarating ride ever since
-          <UnhideText>
-            , captivated by the art of creating beautiful and responsive user
-            interfaces
-          </UnhideText>
+          , and it’s been an exhilarating ride ever since,
         </UnhideText>
-        , but my curiosity quickly led me to explore the backend, databases, and
-        DevOps, transforming me into a well-rounded full-stack developer.
+        captivated by the art of creating beautiful and responsive user
+        interfaces, but my curiosity quickly led me to explore the backend,
+        databases, and DevOps, transforming me into a well-rounded full-stack
+        developer.{" "}
         <strong>
           <em>
-            {" "}
             My primary stack is the MERN (MongoDB, Express.js, React, Node.js)
           </em>
         </strong>{" "}
-        ecosystem{" "}
+        ecosystem
         <UnhideText>
+          {" "}
           but I’m always experimenting with modern tools like{" "}
           <strong>
-            {" "}
             Next.js for server-side rendering, WebSocket for real-time
             communication
           </strong>
-          , and other cutting-edge technologies that push the boundaries of
-          what’s possible on the web
+          , and other cutting-edge technologies.
         </UnhideText>
-        .
         <p className="mt-4">
           <UnhideText>
-            {"Although I don’t have formal work experience yet, "}
-          </UnhideText>
+            Although I don’t have formal work experience yet,
+          </UnhideText>{" "}
           I’ve spent countless hours building personal projects, contributing to
           open-source, and immersing myself in the developer community.{" "}
           <UnhideText>
             I thrive on taking rough, abstract ideas and turning them into fully
-            functional, well-designed products
-            <UnhideText>
-              —whether it’s crafting intuitive user interfaces, designing
-              scalable and efficient backends, optimizing databases, or
-              automating deployment <strong>pipelines with CI/CD tools.</strong>
-            </UnhideText>
-          </UnhideText>{" "}
-          I’m a <strong>quick learner</strong> and love diving into new
-          frameworks, libraries, and tools to expand my skill set and stay ahead
-          in the ever-evolving tech landscape.
-        </p>
-        <p className="mt-4">
-          So far, I’ve built a variety of projects
-          <UnhideText>
-            , from dynamic web applications and e-commerce platforms to
-            real-time chat systems and interactive dashboards
-          </UnhideText>
-          . Each project has been a learning experience, helping me refine my
-          <strong> problem-solving skills</strong> and deepen my understanding
-          of the full development lifecycle.{" "}
-          <UnhideText>
-            I’m particularly fascinated by the intersection of design and
-            technology, and
-          </UnhideText>{" "}
-          I strive to create products that are <em>not</em>{" "}
-          <strong>
-            only functional and performant but also visually appealing,
-            accessible, and user-friendly
-          </strong>
-          .{" "}
-          <UnhideText>
-            I believe that great software is a{" "}
-            <strong>blend of technical excellence and thoughtful design</strong>
-            .
+            functional, well-designed products.
           </UnhideText>
         </p>
-        <p className="mt-4">
-          While I’m still early in my career, I’m incredibly excited about the
-          future and the opportunities to{" "}
-          <UnhideText>
-            grow <UnhideText>, collaborate,</UnhideText> and
-          </UnhideText>{" "}
-          make a meaningful impact in the tech world. I’m always{" "}
-          <strong>
-            eager to learn, share knowledge, and connect with like-minded
-            developers
-          </strong>{" "}
-          who are passionate about building cool things and solving real-world
-          problems.{" "}
-          <UnhideText>
-            Whether it’s through open-source contributions, hackathons, or
-            personal projects,{" "}
-            <UnhideText>
-              I’m committed to continuously improving my craft and contributing
-              to the developer community in meaningful ways.
-            </UnhideText>
-          </UnhideText>
-        </p>
-      </div>
-      <div className="flex items-center gap-8 flex-wrap">
+        {/* Further paragraphs … */}
+      </section>
+
+      <section className="flex items-center gap-8 flex-wrap">
         <a
           target="_blank"
+          rel="noopener noreferrer"
           href="https://github.com/AmarMuric04"
           className="theme-text-secondary-hover flex gap-3 text-lg cursor-pointer items-center transition-all"
         >
@@ -150,6 +95,7 @@ const Home: React.FC = () => {
         </a>
         <a
           target="_blank"
+          rel="noopener noreferrer"
           href="https://www.linkedin.com/in/amar-muri%C4%87-52564b2a2/"
           className="theme-text-secondary-hover flex gap-3 text-lg cursor-pointer items-center transition-all"
         >
@@ -163,7 +109,7 @@ const Home: React.FC = () => {
           <MailSVG />
           <p>Email</p>
         </a>
-      </div>
+      </section>
     </>
   );
 };
