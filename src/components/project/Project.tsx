@@ -144,7 +144,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
 
         {project.techs && <ProjectTech techs={project.techs} />}
 
-        <div className="flex justify-between w-full items-center text-sm mt-1 flex-col-reverse sm:flex-row">
+        <div className="flex justify-between w-full gap-2 sm:gap-0 items-center text-sm mt-1 flex-col-reverse sm:flex-row">
           <div className="flex gap-1 w-full">
             <ActionButton
               classes="py-1 w-1/2 sm:w-[8rem]"
@@ -190,7 +190,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
           </div>
         )}
 
-        <div className="flex justify-between w-full items-center text-sm mt-1 flex-wrap">
+        <div className="flex justify-between w-full gap-2 sm:gap-0 items-center text-sm mt-1 flex-wrap">
           <div className="flex gap-1 w-full sm:w-auto">
             <ActionButton
               classes="py-1 w-1/2 sm:w-[8rem]"

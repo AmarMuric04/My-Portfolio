@@ -32,7 +32,7 @@ const Highlights: React.FC<HighlightsProps> = ({
               <button
                 onClick={() => setSection(index)}
                 key={image.image + "dot"}
-                className={`p-1.25 rounded-full cursor-pointer relative ${
+                className={`p-1.25 text-white rounded-full cursor-pointer relative ${
                   isSelected
                     ? "theme-secondary-background"
                     : "theme-accent-background"
