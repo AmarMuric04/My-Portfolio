@@ -80,7 +80,7 @@ const Header: React.FC<{
       <Toggle
         handleChange={changeTheme}
         isChecked={isCorrectTheme}
-        classes={`sm:hidden fixed z-50 bottom-5 transition-all left-5 justify-center h-[4rem] w-[4rem]`}
+        classes={`sm:hidden fixed z-50 bottom-5 transition-all left-5 flex items-center justify-center h-[4rem] w-[4rem]`}
       />
       <a
         href="mailto:muricamar2004@gmail.com"
