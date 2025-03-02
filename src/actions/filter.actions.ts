@@ -1,11 +1,9 @@
 import { Dispatch, SetStateAction } from "react";
 
-type KeyType = string | number;
-
 export const handleToggleInclusion = (
-  key: KeyType,
-  setMustInclude: Dispatch<SetStateAction<KeyType[]>>,
-  setMustNotInclude: Dispatch<SetStateAction<KeyType[]>>
+  key: string,
+  setMustInclude: Dispatch<SetStateAction<string[]>>,
+  setMustNotInclude: Dispatch<SetStateAction<string[]>>
 ) => {
   setMustInclude((prevMustInclude) => {
     if (prevMustInclude.includes(key)) {
@@ -18,9 +16,9 @@ export const handleToggleInclusion = (
 };
 
 export const handleDoubleClickInclusion = (
-  key: KeyType,
-  setMustInclude: Dispatch<SetStateAction<KeyType[]>>,
-  setMustNotInclude: Dispatch<SetStateAction<KeyType[]>>
+  key: string,
+  setMustInclude: Dispatch<SetStateAction<string[]>>,
+  setMustNotInclude: Dispatch<SetStateAction<string[]>>
 ) => {
   setMustInclude((prev) => prev.filter((item) => item !== key));
   setMustNotInclude((prev) => {
@@ -33,9 +31,9 @@ export const handleDoubleClickInclusion = (
 };
 
 export const handleToggleCategory = (
-  category: KeyType,
-  setSelectedCategories: Dispatch<SetStateAction<KeyType[]>>,
-  setExcludedCategories: Dispatch<SetStateAction<KeyType[]>>
+  category: string,
+  setSelectedCategories: Dispatch<SetStateAction<string[]>>,
+  setExcludedCategories: Dispatch<SetStateAction<string[]>>
 ) => {
   setSelectedCategories((prevSelected) => {
     if (prevSelected.includes(category)) {
@@ -48,9 +46,9 @@ export const handleToggleCategory = (
 };
 
 export const handleDoubleClickCategory = (
-  category: KeyType,
-  setSelectedCategories: Dispatch<SetStateAction<KeyType[]>>,
-  setExcludedCategories: Dispatch<SetStateAction<KeyType[]>>
+  category: string,
+  setSelectedCategories: Dispatch<SetStateAction<string[]>>,
+  setExcludedCategories: Dispatch<SetStateAction<string[]>>
 ) => {
   setSelectedCategories((prev) => prev.filter((item) => item !== category));
   setExcludedCategories((prev) => {

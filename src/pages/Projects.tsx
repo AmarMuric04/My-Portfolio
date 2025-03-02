@@ -1,7 +1,10 @@
-import React from "react";
-import ProjectList from "../components/project/ProjectList";
-import SmallProjectList from "../components/project/SmallProjectList";
+import React, { Suspense, lazy } from "react";
 import { Helmet } from "react-helmet";
+
+const ProjectList = lazy(() => import("../components/project/ProjectList"));
+const SmallProjectList = lazy(
+  () => import("../components/project/SmallProjectList")
+);
 
 const Projects: React.FC = () => {
   return (
@@ -23,6 +26,10 @@ const Projects: React.FC = () => {
         />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/portfolio-logo.png" />
+        <meta
+          property="og:url"
+          content="https://your-portfolio-url.com/projects"
+        />
       </Helmet>
       <h2 className="text-white font-semibold text-2xl mb-8">Projects</h2>
       <p className="text-lg">
@@ -31,20 +38,22 @@ const Projects: React.FC = () => {
         problems I’ve encountered. Here’s a glimpse at some of what I’ve worked
         on.
       </p>
-      <ProjectList />
-      <p className="text-lg my-4">
-        Here are a few more projects I’ve tackled. For the full collection, feel
-        free to check out my{" "}
-        <a
-          target="_blank"
-          href="https://github.com/AmarMuric04"
-          className="hover:text-[#697565] transition-all font-semibold underline cursor-pointer"
-        >
-          GitHub profile
-        </a>
-        .
-      </p>
-      <SmallProjectList />
+      <Suspense fallback={<div>Loading...</div>}>
+        <ProjectList />
+        <p className="text-lg my-4">
+          Here are a few more projects I’ve tackled. For the full collection,
+          feel free to check out my{" "}
+          <a
+            target="_blank"
+            href="https://github.com/AmarMuric04"
+            className="hover:text-[#697565] transition-all font-semibold underline cursor-pointer"
+          >
+            GitHub profile
+          </a>
+          .
+        </p>
+        <SmallProjectList />
+      </Suspense>
     </>
   );
 };

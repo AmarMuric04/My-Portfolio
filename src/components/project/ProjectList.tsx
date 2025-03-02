@@ -1,19 +1,25 @@
-import Project from "./Project.js";
-import { projects } from "../../assets/projects.js";
+import Project from "./Project";
+import { projects } from "../../assets/projects";
 import { useEffect, useState } from "react";
-import { FilterSVG, MiniArrowDownSVG } from "../../assets/svgs.js";
-import { techSVGS } from "../../assets/projectTechs.js";
-import ActionButton from "../buttons/ActionButton.js";
+import { FilterSVG, MiniArrowDownSVG } from "../../assets/svgs";
+import { techSVGS } from "../../assets/projectTechs";
+import ActionButton from "../buttons/ActionButton";
 import { motion, AnimatePresence } from "framer-motion";
-import * as Filter from "../../actions/filter.actions.js";
+import * as Filter from "../../actions/filter.actions";
+import { ProjectType } from "../../types/project";
 
 export default function ProjectList() {
-  const [addingFilter, setAddingFilter] = useState(false);
-  const [showedProjects, setShowedProjects] = useState(projects);
-  const [mustInclude, setMustInclude] = useState([]);
-  const [mustNotInclude, setMustNotInclude] = useState([]);
-  const [selectedCategories, setSelectedCategories] = useState([]);
-  const [excludedCategories, setExcludedCategories] = useState([]);
+  const [addingFilter, setAddingFilter] = useState<boolean>(false);
+  const [showedProjects, setShowedProjects] =
+    useState<Array<ProjectType>>(projects);
+  const [mustInclude, setMustInclude] = useState<Array<string>>([]);
+  const [mustNotInclude, setMustNotInclude] = useState<Array<string>>([]);
+  const [selectedCategories, setSelectedCategories] = useState<Array<string>>(
+    []
+  );
+  const [excludedCategories, setExcludedCategories] = useState<Array<string>>(
+    []
+  );
 
   useEffect(() => {
     if (!addingFilter) {
@@ -48,11 +54,13 @@ export default function ProjectList() {
         const categoryMatch =
           selectedCategories.length === 0 ||
           selectedCategories.some(
-            (category) => project.techs[category]?.length > 0
+            (category) =>
+              project.techs[category as keyof typeof project.techs]?.length > 0
           );
         const notCategoryMatch = excludedCategories.every(
           (category) =>
-            !project.techs[category] || project.techs[category].length === 0
+            !project.techs[category as keyof typeof project.techs] ||
+            project.techs[category as keyof typeof project.techs].length === 0
         );
 
         return techMatch && notTechMatch && categoryMatch && notCategoryMatch;

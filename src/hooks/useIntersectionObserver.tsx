@@ -13,7 +13,7 @@ const useIntersectionObserver = ({
 }: IntersectionObserverProps = {}) => {
   const [isIntersecting, setIsIntersecting] = useState<boolean>(false);
   const [wasInView, setWasInView] = useState<boolean>(false);
-  const targetRef = useRef<HTMLElement | null>(null);
+  const targetRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const target = targetRef.current;

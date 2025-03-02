@@ -18,6 +18,7 @@ import MoreModal from "./MoreModal";
 import MyThoughtsModal from "./MyThoughtsModal";
 import { ProjectType } from "../../types/project";
 import { ModalType } from "../../types/moda";
+import { projectImages } from "../../assets/projectHighlights";
 
 interface ProjectProps {
   project: ProjectType;
@@ -30,6 +31,8 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
   const [wasInView, setWasInView] = useState<boolean>(false);
   const [openedModal, setOpenedModal] = useState<Array<ModalType>>([]);
   const { targetRef, isIntersecting } = useIntersectionObserver();
+  const [section, setSection] = useState<number>(0);
+  const images = projectImages[project.title.toLowerCase()];
 
   useEffect(() => {
     if (isIntersecting && !wasInView) {
@@ -59,6 +62,14 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
         return <MyThoughtsModal project={project} />;
       default:
         return null;
+    }
+  };
+
+  const handleClick = (direction: "prev" | "next") => {
+    if (direction === "prev") {
+      setSection((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    } else {
+      setSection((prev) => (prev === images.length - 1 ? 0 : prev + 1));
     }
   };
 
@@ -207,7 +218,15 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
           </div>
         </div>
 
-        {!hideHighlights && <Highlights title={project.title} />}
+        {!hideHighlights && (
+          <Highlights
+            title={project.title}
+            images={images}
+            section={section}
+            setSection={setSection}
+            handleClick={handleClick}
+          />
+        )}
 
         <ActionButton
           action={() => toggleModal(ModalType.README)}
