@@ -6,14 +6,14 @@ interface IntersectionObserverProps {
   rootMargin?: string;
 }
 
-const useIntersectionObserver = ({
+const useIntersectionObserver = <T extends HTMLElement = HTMLElement>({
   threshold = 0.1,
   root = null,
   rootMargin = "0px",
 }: IntersectionObserverProps = {}) => {
   const [isIntersecting, setIsIntersecting] = useState<boolean>(false);
   const [wasInView, setWasInView] = useState<boolean>(false);
-  const targetRef = useRef<HTMLElement>(null);
+  const targetRef = useRef<T | null>(null);
 
   useEffect(() => {
     const target = targetRef.current;
