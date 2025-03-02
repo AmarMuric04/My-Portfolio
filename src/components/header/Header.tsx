@@ -39,8 +39,8 @@ const Header: React.FC<{
             !isIntersecting ? "md:w-[30rem] w-[80%]" : "md:w-[40rem] w-[95%]"
           }`}
         >
-          <ul className="flex w-full justify-between h-full items-center">
-            <div className="flex gap-4 rounded-full h-full w-full sm:w-auto transition-all duration-300">
+          <div className="flex w-full justify-between h-full items-center">
+            <ul className="flex gap-4 rounded-full h-full w-full sm:w-auto transition-all duration-300">
               <Toggle
                 handleChange={changeTheme}
                 isChecked={isCorrectTheme}
@@ -58,16 +58,18 @@ const Header: React.FC<{
                 <EducationSVG />
                 <NavBarText>Education</NavBarText>
               </NavBarItem>
-            </div>
+            </ul>
 
-            <a
-              href="mailto:muricamar2004@gmail.com"
-              className="hidden sm:flex items-center gap-2"
-            >
-              <ContactSVG />
-              <p>Say Hi</p>
-            </a>
-          </ul>
+            <button>
+              <a
+                href="mailto:muricamar2004@gmail.com"
+                className="hidden sm:flex items-center gap-2"
+              >
+                <ContactSVG />
+                <p>Say Hi</p>
+              </a>
+            </button>
+          </div>
         </nav>
       </header>
       <Toggle
@@ -77,7 +79,7 @@ const Header: React.FC<{
       />
       <a
         href="mailto:muricamar2004@gmail.com"
-        className={`sm:hidden theme-background theme-text-secondary fixed z-50 bottom-5 transition-all right-5 flex items-center justify-center h-[3rem] rounded-full gap-2 shadow-xl ${
+        className={`sm:hidden theme-background theme-title-text fixed z-50 bottom-5 transition-all right-5 flex items-center justify-center h-[3rem] rounded-full gap-2 shadow-xl ${
           isVisible ? "w-[3rem]" : "w-[6rem] rounded-br-none"
         }`}
       >

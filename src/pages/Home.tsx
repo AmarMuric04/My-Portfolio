@@ -1,4 +1,4 @@
-import Myself from "/myself.jpeg";
+import Myself from "/myself.webp";
 import UnhideText from "../components/buttons/UnhideText";
 import { GithubSVG, LinkedInSVG, MailSVG } from "../assets/svgs";
 import { Helmet } from "react-helmet";

@@ -27,21 +27,23 @@ const Education: React.FC<EducationProps> = ({ edu }) => {
       ref={targetRef}
       className="theme-surface transition-all  p-3 rounded-lg shadow-xl relative my-4 overflow-hidden"
     >
-      <h1 className="transition-all theme-title-text font-semibold text-lg py-2">
-        {edu.name}
-      </h1>
-      <p>{edu.type}</p>
-      <em className="block">
-        at {edu.institution} {edu.teacher !== "N/A" && "by " + edu.teacher}
-      </em>
-      <ProgressBar
-        currentProgression={currentProgression}
-        takeAway={takeAway}
-      />
-      <ProgressLabel type={edu.type} />
+      <article>
+        <h1 className="transition-all theme-title-text font-semibold text-lg py-2">
+          {edu.name}
+        </h1>
+        <p>{edu.type}</p>
+        <em className="block">
+          at {edu.institution} {edu.teacher !== "N/A" && "by " + edu.teacher}
+        </em>
+        <ProgressBar
+          currentProgression={currentProgression}
+          takeAway={takeAway}
+        />
+        <ProgressLabel type={edu.type} />
 
-      <p className="my-4 italic font-semibold">Acquired Skills</p>
-      <SkillList skills={edu.skills} />
+        <p className="my-4 italic font-semibold">Acquired Skills</p>
+        <SkillList skills={edu.skills} />
+      </article>
     </li>
   );
 };

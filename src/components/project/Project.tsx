@@ -77,7 +77,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
     "/" + project.title.replace(" ", "").toLowerCase() + "-logo.png";
 
   return (
-    <>
+    <li>
       {Object.values(ModalType).map((modal) => (
         <Modal
           key={modal}
@@ -96,7 +96,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
         </Modal>
       ))}
 
-      <section
+      <article
         ref={targetRef}
         className="transition-all theme-surface theme-primary-text p-3 rounded-lg shadow-xl relative"
       >
@@ -243,8 +243,8 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
         >
           README.md
         </ActionButton>
-      </section>
-    </>
+      </article>
+    </li>
   );
 };
 
