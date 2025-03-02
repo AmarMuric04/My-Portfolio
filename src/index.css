@@ -6,6 +6,10 @@
   }
 }
 
+body {
+  font-family: "Inter", sans-serif;
+}
+
 @keyframes show {
   from {
     opacity: 0;
