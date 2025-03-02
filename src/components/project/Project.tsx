@@ -109,16 +109,16 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
         )}
 
         <div className="flex gap-x-2 items-center flex-wrap max-w-1/2 lg:max-w-4/5 mb-4 sm:mb-0">
-          <p className="theme-title-text font-semibold text-lg py-2">
+          <p className="theme-title-text font-semibold text-lg py-2 transition-all">
             {project.title}
           </p>
           {project.info && (
-            <p className="cursor-pointer border-2 theme-primary-text-border text-xs px-1 theme-text-primary rounded-full">
+            <p className="cursor-pointer border-2 theme-primary-text-border transition-all text-xs px-1 theme-text-primary rounded-full">
               {project.info}
             </p>
           )}
           {project.type && (
-            <p className="cursor-pointer border-2 theme-primary-text-border text-xs px-1 theme-text-primary rounded-full">
+            <p className="cursor-pointer border-2 theme-primary-text-border transition-all text-xs px-1 theme-text-primary rounded-full">
               {project.type}
             </p>
           )}

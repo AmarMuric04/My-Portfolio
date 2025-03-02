@@ -12,7 +12,7 @@ const Root = () => {
       className="transition-all theme-background min-h-screen pb-32"
     >
       <main className="w-full flex justify-center theme-container-text transition-all">
-        <div className="lg:w-[40rem] w-[95%]">
+        <div className="md:w-[40rem] w-[95%]">
           <Header
             changeTheme={() => setIsLight(!isLight)}
             isCorrectTheme={isLight}

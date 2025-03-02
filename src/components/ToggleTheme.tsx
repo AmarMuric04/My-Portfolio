@@ -5,13 +5,18 @@ import React from "react";
 interface ToggleProps {
   handleChange: () => void;
   isChecked: boolean;
+  classes: string;
 }
 
-const Toggle: React.FC<ToggleProps> = ({ handleChange, isChecked }) => {
+const Toggle: React.FC<ToggleProps> = ({
+  handleChange,
+  isChecked,
+  classes,
+}) => {
   return (
     <button
       onClick={handleChange}
-      className="transition-all border-2 theme-surface-border shadow-md cursor-pointer h-full w-[3.5rem] grid place-items-center theme-background rounded-full"
+      className={`transition-all border-2 theme-surface-border shadow-md cursor-pointer place-items-center theme-background rounded-full ${classes}`}
     >
       <div className="scale-125 mt-1">
         {/* @ts-expect-error Doesn't support React 19 so it will send errors. */}
