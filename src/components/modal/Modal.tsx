@@ -23,14 +23,22 @@ const Modal: React.FC<ModalProps> = ({
   };
 
   useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && open.includes(id)) {
+        closeModal();
+      }
+    };
+
     if (open.includes(id)) {
       document.body.style.overflow = "hidden";
+      document.addEventListener("keydown", handleKeyDown);
     } else {
       document.body.style.overflow = "auto";
     }
 
     return () => {
       document.body.style.overflow = "auto";
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, [open, id]);
 
@@ -61,7 +69,7 @@ const Modal: React.FC<ModalProps> = ({
                 {title}
               </h1>
               <button
-                className="hover:bg-[#ffffff20] hover:text-red-400 transition-all p-3 rounded-full"
+                className="hover:bg-[#ffffff20] cursor-pointer hover:text-red-400 transition-all p-3 rounded-full"
                 onClick={closeModal}
                 aria-label="Close modal"
               >

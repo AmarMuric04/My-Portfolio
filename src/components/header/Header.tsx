@@ -18,7 +18,7 @@ const Header: React.FC<{
   isCorrectTheme: boolean;
 }> = ({ changeTheme, isCorrectTheme }) => {
   const { targetRef, isIntersecting } = useIntersectionObserver();
-  const [scrollY, setScrollY] = useState(0)
+  const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -65,7 +65,7 @@ const Header: React.FC<{
               </NavBarItem>
             </ul>
 
-            <button>
+            <button id="contact" aria-label="Say hi through an email">
               <a
                 href="mailto:muricamar2004@gmail.com"
                 className="hidden sm:flex items-center gap-2"
@@ -80,7 +80,7 @@ const Header: React.FC<{
       <Toggle
         handleChange={changeTheme}
         isChecked={isCorrectTheme}
-        classes={`sm:hidden fixed z-50 bottom-5 transition-all left-5 justify-center h-[3rem] w-[3rem]`}
+        classes={`sm:hidden fixed z-50 bottom-5 transition-all left-5 justify-center h-[4rem] w-[4rem]`}
       />
       <a
         href="mailto:muricamar2004@gmail.com"

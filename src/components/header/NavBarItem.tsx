@@ -17,7 +17,11 @@ const NavBarItem: React.FC<NavBarItemProps> = ({ to, children }) => {
       initial={false}
       animate={{ opacity: isSelected ? 1 : 0.7 }}
     >
-      <Link to={to} className="flex items-center gap-2">
+      <Link
+        aria-label={`Go to the ${children} page to learn more about me`}
+        to={to}
+        className="flex items-center gap-2"
+      >
         {children}
       </Link>
       {isSelected && (
