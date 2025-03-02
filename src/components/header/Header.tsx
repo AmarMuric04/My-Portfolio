@@ -18,18 +18,23 @@ const Header: React.FC<{
   isCorrectTheme: boolean;
 }> = ({ changeTheme, isCorrectTheme }) => {
   const { targetRef, isIntersecting } = useIntersectionObserver();
+  const [scrollY, setScrollY] = useState(0)
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsVisible(window.scrollY > 10);
+      if (window.scrollY > scrollY) {
+        setIsVisible(true);
+      } else setIsVisible(false);
+      setScrollY(window.scrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [scrollY]);
 
   return (
     <>
