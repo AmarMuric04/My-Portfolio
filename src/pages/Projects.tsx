@@ -31,7 +31,9 @@ const Projects: React.FC = () => {
           content="https://your-portfolio-url.com/projects"
         />
       </Helmet>
-      <h2 className="text-white font-semibold text-2xl mb-8">Projects</h2>
+      <h2 className="transition-all theme-title-text font-semibold text-2xl mb-8">
+        Projects
+      </h2>
       <p className="text-lg">
         Over the past two years, I’ve taken on a mix of projects—some for
         enjoyment, others to explore concepts, and a few to solve specific

@@ -22,7 +22,7 @@ const NavBarItem: React.FC<NavBarItemProps> = ({ to, children }) => {
       </Link>
       {isSelected && (
         <motion.div
-          className="absolute bottom-0 left-0 w-full h-0.5 bg-[#ECDFCC]"
+          className="absolute bottom-0 left-0 w-full h-0.5 theme-primary-text-background"
           layoutId="underline"
           transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
         />

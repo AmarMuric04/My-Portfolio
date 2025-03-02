@@ -22,7 +22,9 @@ export default function Education() {
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/portfolio-logo.png" />
       </Helmet>
-      <h2 className="text-white font-semibold text-2xl mb-8">My Education</h2>
+      <h2 className="transition-all theme-title-text font-semibold text-2xl mb-8">
+        My Education
+      </h2>
       <p className="text-lg">
         I’m currently in my second year of university, where I’ve been actively
         exploring a mix of academic and hands-on projects. From coursework to

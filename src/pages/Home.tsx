@@ -33,7 +33,7 @@ const Home: React.FC = () => {
           alt="Amar Murić"
         />
         <div>
-          <h2 className="font-bold text-white text-xl sm:text-4xl">
+          <h2 className="font-bold transition-all theme-title-text text-xl sm:text-4xl">
             Amar Murić
           </h2>
           <p className="sm:text-xl">
@@ -54,7 +54,7 @@ const Home: React.FC = () => {
         </UnhideText>
         , but my curiosity quickly led me to explore the backend, databases, and
         DevOps, transforming me into a well-rounded full-stack developer.
-        <strong className="text-[#ddd]">
+        <strong>
           <em>
             {" "}
             My primary stack is the MERN (MongoDB, Express.js, React, Node.js)
@@ -87,9 +87,9 @@ const Home: React.FC = () => {
               automating deployment <strong>pipelines with CI/CD tools.</strong>
             </UnhideText>
           </UnhideText>{" "}
-          I’m a <strong className="text-[#ddd]">quick learner</strong> and love
-          diving into new frameworks, libraries, and tools to expand my skill
-          set and stay ahead in the ever-evolving tech landscape.
+          I’m a <strong>quick learner</strong> and love diving into new
+          frameworks, libraries, and tools to expand my skill set and stay ahead
+          in the ever-evolving tech landscape.
         </p>
         <p className="mt-4">
           So far, I’ve built a variety of projects
@@ -98,14 +98,14 @@ const Home: React.FC = () => {
             real-time chat systems and interactive dashboards
           </UnhideText>
           . Each project has been a learning experience, helping me refine my
-          <strong className="text-[#ddd]"> problem-solving skills</strong> and
-          deepen my understanding of the full development lifecycle.{" "}
+          <strong> problem-solving skills</strong> and deepen my understanding
+          of the full development lifecycle.{" "}
           <UnhideText>
             I’m particularly fascinated by the intersection of design and
             technology, and
           </UnhideText>{" "}
           I strive to create products that are <em>not</em>{" "}
-          <strong className="text-[#ddd]">
+          <strong>
             only functional and performant but also visually appealing,
             accessible, and user-friendly
           </strong>
@@ -123,7 +123,7 @@ const Home: React.FC = () => {
             grow <UnhideText>, collaborate,</UnhideText> and
           </UnhideText>{" "}
           make a meaningful impact in the tech world. I’m always{" "}
-          <strong className="text-[#ddd]">
+          <strong>
             eager to learn, share knowledge, and connect with like-minded
             developers
           </strong>{" "}
@@ -143,7 +143,7 @@ const Home: React.FC = () => {
         <a
           target="_blank"
           href="https://github.com/AmarMuric04"
-          className="hover:text-[#697565] flex gap-3 text-lg cursor-pointer items-center transition-all"
+          className="theme-text-secondary-hover flex gap-3 text-lg cursor-pointer items-center transition-all"
         >
           <GithubSVG />
           <p>GitHub</p>
@@ -151,14 +151,14 @@ const Home: React.FC = () => {
         <a
           target="_blank"
           href="https://www.linkedin.com/in/amar-muri%C4%87-52564b2a2/"
-          className="hover:text-[#697565] flex gap-3 text-lg cursor-pointer items-center transition-all"
+          className="theme-text-secondary-hover flex gap-3 text-lg cursor-pointer items-center transition-all"
         >
           <LinkedInSVG />
           <p>LinkedIn</p>
         </a>
         <a
           href="mailto:muricamar2004@gmail.com"
-          className="hover:text-[#697565] flex gap-3 text-lg cursor-pointer items-center transition-all"
+          className="theme-text-secondary-hover flex gap-3 text-lg cursor-pointer items-center transition-all"
         >
           <MailSVG />
           <p>Email</p>

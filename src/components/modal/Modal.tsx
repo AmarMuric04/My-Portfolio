@@ -50,7 +50,7 @@ const Modal: React.FC<ModalProps> = ({
         >
           <motion.div
             onClick={(e) => e.stopPropagation()}
-            className="p-8 rounded-xl lg:w-[40rem] w-[95%] min-h-[40vh] bg-[#262825] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 shadow-xl"
+            className="p-8 rounded-xl lg:w-[40rem] w-[95%] min-h-[40vh] theme-surface absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 shadow-xl"
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.9 }}

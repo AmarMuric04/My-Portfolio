@@ -27,9 +27,9 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
         )}
       </div>
 
-      <div className="h-[5px] w-full bg-[#2D2F2B]">
+      <div className="h-[5px] w-full theme-surface-alt transition-all">
         <div
-          className="h-full rounded-full bg-[#697565]"
+          className="h-full rounded-full theme-secondary-background"
           style={{
             width: `${currentProgression}%`,
           }}

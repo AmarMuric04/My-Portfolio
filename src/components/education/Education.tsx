@@ -25,9 +25,11 @@ const Education: React.FC<EducationProps> = ({ edu }) => {
   return (
     <li
       ref={targetRef}
-      className="bg-[#262825] p-3 rounded-lg shadow-xl relative my-4 overflow-hidden"
+      className="theme-surface transition-all  p-3 rounded-lg shadow-xl relative my-4 overflow-hidden"
     >
-      <h1 className="text-white font-semibold text-lg py-2">{edu.name}</h1>
+      <h1 className="transition-all theme-title-text font-semibold text-lg py-2">
+        {edu.name}
+      </h1>
       <p>{edu.type}</p>
       <em className="block">
         at {edu.institution} {edu.teacher !== "N/A" && "by " + edu.teacher}

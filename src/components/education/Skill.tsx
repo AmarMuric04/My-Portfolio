@@ -5,7 +5,10 @@ const Skill: React.FC<{ key: string; children?: React.ReactNode }> = ({
   children,
 }) => {
   return (
-    <li className="bg-[#697565] px-2 py-1 rounded-md" key={key}>
+    <li
+      className="theme-secondary-background text-white transition-all px-2 py-1 rounded-md"
+      key={key}
+    >
       {children}
     </li>
   );

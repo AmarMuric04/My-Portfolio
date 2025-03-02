@@ -7,12 +7,16 @@ import {
 } from "../../assets/svgs";
 import NavBarItem from "./NavBarItem";
 import useIntersectionObserver from "../../hooks/useIntersectionObserver";
+import Toggle from "../ToggleTheme";
 
-const NavBarText: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <p className="hidden sm:flex">{children}</p>
-);
+const NavBarText: React.FC<{
+  children: React.ReactNode;
+}> = ({ children }) => <p className="hidden sm:flex">{children}</p>;
 
-const Header = () => {
+const Header: React.FC<{
+  changeTheme: () => void;
+  isCorrectTheme: boolean;
+}> = ({ changeTheme, isCorrectTheme }) => {
   const { targetRef, isIntersecting } = useIntersectionObserver();
   const [isVisible, setIsVisible] = useState(false);
 
@@ -31,12 +35,13 @@ const Header = () => {
     <>
       <header className="mb-28" ref={targetRef}>
         <nav
-          className={`bg-[#262825] select-none shadow-sm h-[3.5rem] top-4 transition-all rounded-full fixed z-50 left-1/2 -translate-x-1/2 px-4 ${
-            !isIntersecting ? "lg:w-[25rem] w-[80%]" : "lg:w-[40rem] w-[95%]"
+          className={`theme-surface select-none shadow-sm h-[3.5rem] top-4 transition-all rounded-full fixed z-50 left-1/2 -translate-x-1/2 pr-4 ${
+            !isIntersecting ? "lg:w-[30rem] w-[80%]" : "lg:w-[40rem] w-[95%]"
           }`}
         >
-          <ul className="flex w-full justify-between text-[#ccc] h-full items-center">
-            <div className="flex gap-4 rounded-full h-full w-full sm:w-auto bg-[#262825] transition-all duration-300">
+          <ul className="flex w-full justify-between h-full items-center">
+            <div className="flex gap-4 rounded-full h-full w-full sm:w-auto transition-all duration-300">
+              <Toggle handleChange={changeTheme} isChecked={isCorrectTheme} />
               <NavBarItem to="/">
                 <HomeSVG />
                 <NavBarText>Home</NavBarText>
@@ -64,7 +69,7 @@ const Header = () => {
 
       <a
         href="mailto:muricamar2004@gmail.com"
-        className={`sm:hidden bg-[#ECDFCC] text-[#1E201E] fixed z-50 bottom-5 transition-all right-5 flex items-center justify-center h-[3rem] rounded-full gap-2 shadow-xl ${
+        className={`sm:hidden theme-background theme-text-secondary fixed z-50 bottom-5 transition-all right-5 flex items-center justify-center h-[3rem] rounded-full gap-2 shadow-xl ${
           isVisible ? "w-[3rem]" : "w-[6rem] rounded-br-none"
         }`}
       >

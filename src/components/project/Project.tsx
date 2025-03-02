@@ -98,7 +98,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
 
       <section
         ref={targetRef}
-        className="bg-[#262825] p-3 rounded-lg shadow-xl relative"
+        className="transition-all theme-surface theme-primary-text p-3 rounded-lg shadow-xl relative"
       >
         {wasInView && (
           <img
@@ -109,16 +109,16 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
         )}
 
         <div className="flex gap-x-2 items-center flex-wrap max-w-1/2 lg:max-w-4/5 mb-4 sm:mb-0">
-          <p className="text-white font-semibold text-lg py-2">
+          <p className="theme-title-text font-semibold text-lg py-2">
             {project.title}
           </p>
           {project.info && (
-            <p className="bg-[#ECDFCC20] cursor-pointer border-2 border-[#ECDFCC] text-xs px-1 text-[#ECDFCC] rounded-full">
+            <p className="cursor-pointer border-2 theme-primary-text-border text-xs px-1 theme-text-primary rounded-full">
               {project.info}
             </p>
           )}
           {project.type && (
-            <p className="bg-[#ECDFCC20] cursor-pointer border-2 border-[#ECDFCC] text-xs px-1 text-[#ECDFCC] rounded-full">
+            <p className="cursor-pointer border-2 theme-primary-text-border text-xs px-1 theme-text-primary rounded-full">
               {project.type}
             </p>
           )}
@@ -136,7 +136,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
           </div>
           <button
             onClick={() => setIsContentExpanded(!isContentExpanded)}
-            className="text-[#ECDFCC] hover:underline cursor-pointer bg-[#262825]"
+            className="transition-all theme-text-primary hover:underline cursor-pointer theme-surface"
           >
             {isContentExpanded ? "show less" : "more...."}
           </button>
@@ -180,7 +180,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
 
         {isShowingFeatures && (
           <div>
-            <ul className="bg-[#1E201E] p-2 rounded-xl my-4 list-decimal">
+            <ul className="theme-background p-2 rounded-xl my-4 list-decimal">
               {project.keyFeatures.map((feature) => (
                 <li className="ml-5" key={feature + project.title}>
                   <pre>{feature}</pre>

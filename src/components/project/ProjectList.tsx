@@ -89,9 +89,9 @@ export default function ProjectList() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="bg-[#262825] p-3 rounded-lg shadow-xl flex flex-col"
+            className="theme-surface p-3 rounded-lg shadow-xl flex flex-col"
           >
-            <section className="py-2 border-b-2 border-b-[#3C3D37]">
+            <section className="py-2 border-b-2 theme-border">
               <div className="flex gap-2 mb-2 items-center">
                 <FilterSVG />
                 <p>
@@ -111,7 +111,7 @@ export default function ProjectList() {
                       <button
                         className={`p-2 rounded-full hover:bg-[#3C3D37] cursor-pointer ${
                           included
-                            ? "bg-[#53594E]"
+                            ? "theme-accent-background"
                             : excluded
                             ? "bg-[#b91c1c]"
                             : ""
@@ -139,7 +139,7 @@ export default function ProjectList() {
               </ul>
             </section>
 
-            <section className="py-2 border-t-2 border-t-[#3C3D37]">
+            <section className="py-2 border-t-2 theme-border">
               <div className="flex gap-2 mb-2 items-center">
                 <FilterSVG />
                 <p>
@@ -172,10 +172,10 @@ export default function ProjectList() {
                         }
                         className={`px-2 py-1 cursor-pointer rounded-md hover:bg-[#53594E] transition-colors ${
                           isSelected
-                            ? "bg-[#3C3D37]"
+                            ? "theme-border-background"
                             : isExcluded
                             ? "bg-[#b91c1c]"
-                            : "bg-[#697565]"
+                            : "theme-secondary-background"
                         }`}
                       >
                         {category}

@@ -33,7 +33,9 @@ const Highlights: React.FC<HighlightsProps> = ({
                 onClick={() => setSection(index)}
                 key={image.image + "dot"}
                 className={`p-1.25 rounded-full cursor-pointer relative ${
-                  isSelected ? "bg-[#697565]" : "bg-[#53594E]"
+                  isSelected
+                    ? "theme-secondary-background"
+                    : "theme-accent-background"
                 }`}
                 aria-pressed={isSelected}
                 aria-label={`Select ${image.description}`}

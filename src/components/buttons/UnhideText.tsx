@@ -14,7 +14,7 @@ const UnhideText: React.FC<UnhideTextProps> = ({ children }) => {
         onClick={() => setRevealed(true)}
         className="inline cursor-pointer mx-1"
       >
-        <span className="inline-flex items-center bg-[#3C3D37] hover:bg-[#3C3D3750] rounded-md px-1">
+        <span className="inline-flex items-center theme-border-background theme-surface-hover transition-all rounded-md px-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="18"

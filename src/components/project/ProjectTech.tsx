@@ -15,10 +15,10 @@ const ProjectTech: React.FC<ProjectTechProps> = React.memo(({ techs }) => {
 
           return (
             <div
-              className="gradient w-[24.2%] min-w-[125px] min-h-[150px] rounded-xl p-2 flex-grow lg:flex-none"
+              className="transition-all gradient w-[24.2%] min-w-[125px] min-h-[150px] rounded-xl p-2 flex-grow lg:flex-none"
               key={category}
             >
-              <p className="text-sm text-[#53594E] uppercase mb-2">
+              <p className="text-sm theme-accent-text uppercase mb-2">
                 {category}
               </p>
               <div className="flex items-center gap-4 flex-wrap max-w-full overflow-hidden">

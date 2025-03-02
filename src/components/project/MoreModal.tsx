@@ -23,7 +23,9 @@ const MoreModal: React.FC<MoreModalProps> = ({
   return (
     <>
       <section className="flex justify-between items-center flex-wrap gap-4">
-        <h1 className="text-lg text-white font-semibold">{project.title}</h1>
+        <h1 className="text-lg theme-title-text font-semibold">
+          {project.title}
+        </h1>
         <div className="flex gap-4">
           <ProjectStatus status={project.status} />
           {project.github && (
