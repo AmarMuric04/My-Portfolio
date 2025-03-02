@@ -10,7 +10,7 @@ const ProjectStatus: React.FC<ProjectStatusProps> = ({ status }) => {
   return (
     <div className="flex mb-2">
       {status === "Live" && (
-        <StatusButton color="red" icon={LiveSVG} status={status} />
+        <StatusButton color="#df2038" icon={LiveSVG} status={status} />
       )}
       {status === "Development" && (
         <StatusButton color="yellow" icon={DevelopmentSVG} status={status} />

@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { Helmet } from "react-helmet";
+import ProjectItemSkeleton from "../components/project/ProjectSkeleton";
 
 const ProjectList = lazy(() => import("../components/project/ProjectList"));
 const SmallProjectList = lazy(
@@ -40,7 +41,11 @@ const Projects: React.FC = () => {
         problems I’ve encountered. Here’s a glimpse at some of what I’ve worked
         on.
       </p>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={Array.from({ length: 3 }).map((_, index) => (
+          <ProjectItemSkeleton key={index} />
+        ))}
+      >
         <ProjectList />
         <p className="text-lg my-4">
           Here are a few more projects I’ve tackled. For the full collection,

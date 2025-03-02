@@ -77,7 +77,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
     "/" + project.title.replace(" ", "").toLowerCase() + "-logo.png";
 
   return (
-    <li>
+    <li className="theme-surface theme-primary-text transition-all p-3 rounded-lg shadow-xl relative">
       {Object.values(ModalType).map((modal) => (
         <Modal
           key={modal}
@@ -96,10 +96,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
         </Modal>
       ))}
 
-      <article
-        ref={targetRef}
-        className="transition-all theme-surface theme-primary-text p-3 rounded-lg shadow-xl relative"
-      >
+      <article ref={targetRef}>
         {wasInView && (
           <img
             className="w-[5rem] h-[5rem] rounded-lg object-contain absolute opacity-50 right-5 top-5"
