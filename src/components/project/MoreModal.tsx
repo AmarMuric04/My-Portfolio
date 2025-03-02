@@ -5,7 +5,7 @@ import ProjectTech from "./ProjectTech";
 import ProjectStatus from "./ProjectStatus";
 import ActionButton from "../buttons/ActionButton";
 import { ProjectType } from "../../types/project";
-import { ModalType } from "../../types/moda";
+import { ModalType } from "../../types/modal";
 
 interface MoreModalProps {
   project: ProjectType;

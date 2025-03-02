@@ -87,51 +87,51 @@ export const projectImages: { [key: string]: Array<ImageType> } = {
   ],
   lelegram: [
     {
-      image: "/lelegram/lelegram0.PNG",
+      image: "/lelegram/lelegram0.webp",
       description: "Phone number",
     },
     {
-      image: "/lelegram/lelegram1.PNG",
+      image: "/lelegram/lelegram1.webp",
       description: "More information",
     },
     {
-      image: "/lelegram/lelegram2.PNG",
+      image: "/lelegram/lelegram2.webp",
       description: "Enter Code",
     },
     {
-      image: "/lelegram/lelegram3.PNG",
+      image: "/lelegram/lelegram3.webp",
       description: "Main Page",
     },
     {
-      image: "/lelegram/lelegram4.PNG",
+      image: "/lelegram/lelegram4.webp",
       description: "Chat List",
     },
     {
-      image: "/lelegram/lelegram5.PNG",
+      image: "/lelegram/lelegram5.webp",
       description: "Active Chat Layout",
     },
     {
-      image: "/lelegram/lelegram6.PNG",
+      image: "/lelegram/lelegram6.webp",
       description: "Creating a Chat",
     },
     {
-      image: "/lelegram/lelegram7.PNG",
+      image: "/lelegram/lelegram7.webp",
       description: "Our Chat information",
     },
     {
-      image: "/lelegram/lelegram8.PNG",
+      image: "/lelegram/lelegram8.webp",
       description: "Our user",
     },
     {
-      image: "/lelegram/lelegram9.PNG",
+      image: "/lelegram/lelegram9.webp",
       description: "Editing Our user",
     },
     {
-      image: "/lelegram/lelegram10.PNG",
+      image: "/lelegram/lelegram10.webp",
       description: "Voice Chat Layout",
     },
     {
-      image: "/lelegram/lelegram10.PNG",
+      image: "/lelegram/lelegram11.webp",
       description: "Screen Sharing Layout",
     },
   ],

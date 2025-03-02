@@ -17,7 +17,7 @@ import { projectREADMEs } from "../../assets/projectREADMEs";
 import MoreModal from "./MoreModal";
 import MyThoughtsModal from "./MyThoughtsModal";
 import { ProjectType } from "../../types/project";
-import { ModalType } from "../../types/moda";
+import { ModalType } from "../../types/modal";
 import { projectImages } from "../../assets/projectHighlights";
 
 interface ProjectProps {
@@ -73,6 +73,9 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
     }
   };
 
+  const projectLogo =
+    "/" + project.title.replace(" ", "").toLowerCase() + "-logo.png";
+
   return (
     <>
       {Object.values(ModalType).map((modal) => (
@@ -100,7 +103,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
         {wasInView && (
           <img
             className="w-[5rem] h-[5rem] rounded-lg object-contain absolute opacity-50 right-5 top-5"
-            src={`/${project.title.replace(" ", "").toLowerCase()}-logo.png`}
+            src={projectLogo}
             alt={`${project.title} logo`}
           />
         )}
@@ -166,7 +169,13 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
               <p>More</p>
             </ActionButton>
           </div>
-          <p className="text-xs flex-shrink-0">{project.duration}</p>
+          <p
+            className="select-none text-xs flex-shrink-0"
+            aria-label="Duration"
+            title="Duration"
+          >
+            {project.duration}
+          </p>
         </div>
 
         {isShowingFeatures && (

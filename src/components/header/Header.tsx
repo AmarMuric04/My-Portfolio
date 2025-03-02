@@ -8,8 +8,11 @@ import {
 import NavBarItem from "./NavBarItem";
 import useIntersectionObserver from "../../hooks/useIntersectionObserver";
 
+const NavBarText: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <p className="hidden sm:flex">{children}</p>
+);
+
 const Header = () => {
-  const [selected, setSelected] = useState("/");
   const { targetRef, isIntersecting } = useIntersectionObserver();
   const [isVisible, setIsVisible] = useState(false);
 
@@ -34,29 +37,17 @@ const Header = () => {
         >
           <ul className="flex w-full justify-between text-[#ccc] h-full items-center">
             <div className="flex gap-4 rounded-full h-full w-full sm:w-auto bg-[#262825] transition-all duration-300">
-              <NavBarItem
-                to="/"
-                isSelected={selected === "/"}
-                onClick={() => setSelected("/")}
-              >
+              <NavBarItem to="/">
                 <HomeSVG />
-                <p className="hidden sm:flex">Home</p>
+                <NavBarText>Home</NavBarText>
               </NavBarItem>
-              <NavBarItem
-                to="/projects"
-                isSelected={selected === "/projects"}
-                onClick={() => setSelected("/projects")}
-              >
+              <NavBarItem to="/projects">
                 <FolderSVG />
-                <p className="hidden sm:flex">Projects</p>
+                <NavBarText>Projects</NavBarText>
               </NavBarItem>
-              <NavBarItem
-                to="/education"
-                isSelected={selected === "/education"}
-                onClick={() => setSelected("/education")}
-              >
+              <NavBarItem to="/education">
                 <EducationSVG />
-                <p className="hidden sm:flex">Education</p>
+                <NavBarText>Education</NavBarText>
               </NavBarItem>
             </div>
 
@@ -71,7 +62,6 @@ const Header = () => {
         </nav>
       </header>
 
-      {/* Floating Contact Button for Mobile */}
       <a
         href="mailto:muricamar2004@gmail.com"
         className={`sm:hidden bg-[#ECDFCC] text-[#1E201E] fixed z-50 bottom-5 transition-all right-5 flex items-center justify-center h-[3rem] rounded-full gap-2 shadow-xl ${

@@ -1,11 +1,12 @@
 import React from "react";
 import ActionButton from "../buttons/ActionButton";
 import { MiniArrowDownSVG } from "../../assets/svgs";
-import useIntersectionObserver from "../../hooks/useIntersectionObserver";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { ImageType } from "../../types/image";
 
 interface HighlightsProps {
   title: string;
-  images: Array<{ image: string; description: string }>;
+  images: Array<ImageType>;
   section: number;
   setSection: (index: number) => void;
   handleClick: (direction: "prev" | "next") => void;
@@ -18,14 +19,8 @@ const Highlights: React.FC<HighlightsProps> = ({
   setSection,
   handleClick,
 }) => {
-  const { targetRef, wasInView } = useIntersectionObserver();
-
   return (
-    <section
-      ref={targetRef}
-      className="mt-4"
-      aria-labelledby="highlights-heading"
-    >
+    <section className="mt-4" aria-labelledby="highlights-heading">
       <h2 id="highlights-heading" className="sr-only">
         {title} Highlights
       </h2>
@@ -70,16 +65,17 @@ const Highlights: React.FC<HighlightsProps> = ({
       {images.map((image, index) => {
         if (index === section) {
           return (
-            <React.Fragment key={image.image + "image"}>
-              {wasInView && (
-                <img
-                  className="rounded-lg lg:min-h-[21rem] showAnimation"
-                  src={image.image}
-                  alt={image.description}
-                  style={{ opacity: 1, transition: "opacity 0.6s" }}
-                />
-              )}
-            </React.Fragment>
+            <picture key={image.image + "image"}>
+              <source srcSet={image.image} type="image/webp" />
+              <LazyLoadImage
+                key={image.image + "image"}
+                className="rounded-lg lg:min-h-[21rem] showAnimation"
+                src={image.image}
+                alt={image.description}
+                effect="blur"
+                visibleByDefault
+              />
+            </picture>
           );
         }
         return null;

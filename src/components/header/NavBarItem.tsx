@@ -4,18 +4,16 @@ import React from "react";
 
 interface NavBarItemProps {
   to: string;
-  onClick: () => void;
   children?: React.ReactNode;
 }
 
-const NavBarItem: React.FC<NavBarItemProps> = ({ to, children, onClick }) => {
+const NavBarItem: React.FC<NavBarItemProps> = ({ to, children }) => {
   const location = useLocation();
   const isSelected = location.pathname === to;
 
   return (
     <motion.li
       className="relative flex h-full w-full sm:w-auto justify-center sm:justify-start"
-      onClick={onClick}
       initial={false}
       animate={{ opacity: isSelected ? 1 : 0.7 }}
     >
