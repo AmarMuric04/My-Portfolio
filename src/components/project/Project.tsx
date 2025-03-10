@@ -189,17 +189,21 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
 
         <div className="flex justify-between w-full gap-2 sm:gap-0 items-center text-sm mt-1 flex-wrap">
           <div className="flex gap-1 w-full sm:w-auto">
-            <ActionButton
-              classes="py-1 w-1/2 sm:w-[8rem]"
-              action={() => setHideHighlights(!hideHighlights)}
-            >
-              <div
-                className={`transition-all ${!hideHighlights && "rotate-180"}`}
+            {images?.length && (
+              <ActionButton
+                classes="py-1 w-1/2 sm:w-[8rem]"
+                action={() => setHideHighlights(!hideHighlights)}
               >
-                <MiniArrowDownSVG />
-              </div>
-              <p>Highlights</p>
-            </ActionButton>
+                <div
+                  className={`transition-all ${
+                    !hideHighlights && "rotate-180"
+                  }`}
+                >
+                  <MiniArrowDownSVG />
+                </div>
+                <p>Highlights</p>
+              </ActionButton>
+            )}
             <ActionButton
               classes="py-1 w-1/2 sm:w-[8rem]"
               action={() => toggleModal(ModalType.MY_THOUGHTS)}
@@ -224,7 +228,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
           </div>
         </div>
 
-        {!hideHighlights && images.length && (
+        {!hideHighlights && (
           <Highlights
             title={project.title}
             images={images}
