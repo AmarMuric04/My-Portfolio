@@ -224,7 +224,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
           </div>
         </div>
 
-        {!hideHighlights && (
+        {!hideHighlights && images.length && (
           <Highlights
             title={project.title}
             images={images}
