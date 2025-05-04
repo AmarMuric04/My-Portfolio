@@ -77,7 +77,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
     "/" + project.title.replace(" ", "").toLowerCase() + "-logo.png";
 
   return (
-    <li className="theme-surface theme-primary-text transition-all p-3 rounded-lg shadow-xl relative">
+    <li className="bg-white/10 border border-white/10 rounded-lg shadow-md theme-surface theme-primary-text transition-all p-3 relative">
       {Object.values(ModalType).map((modal) => (
         <Modal
           key={modal}

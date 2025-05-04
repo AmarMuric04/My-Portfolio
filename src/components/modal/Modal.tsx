@@ -58,7 +58,7 @@ const Modal: React.FC<ModalProps> = ({
         >
           <motion.div
             onClick={(e) => e.stopPropagation()}
-            className="p-8 rounded-xl lg:w-[40rem] w-[95%] min-h-[40vh] theme-surface absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 shadow-xl"
+            className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg shadow-md p-8 lg:w-[40rem] w-[95%] min-h-[40vh] theme-surface absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
@@ -69,7 +69,7 @@ const Modal: React.FC<ModalProps> = ({
                 {title}
               </h1>
               <button
-                className="hover:bg-[#ffffff20] cursor-pointer hover:text-red-400 transition-all p-3 rounded-full"
+                className="hover:bg-[#ffffff20] cursor-pointer transition-all p-1 rounded-md"
                 onClick={closeModal}
                 aria-label="Close modal"
               >

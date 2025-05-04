@@ -40,7 +40,7 @@ const Header: React.FC<{
     <>
       <header className="mb-28" ref={targetRef}>
         <nav
-          className={`theme-surface select-none shadow-sm h-[3.5rem] top-4 transition-all rounded-full fixed z-50 left-1/2 -translate-x-1/2 pr-4 overflow-hidden ${
+          className={`bg-white/10 backdrop-blur-sm border border-white/10 shadow-md theme-surface select-none h-[3.5rem] top-4 transition-all rounded-full fixed z-50 left-1/2 -translate-x-1/2 pr-4 overflow-hidden ${
             !isIntersecting ? "md:w-[30rem] w-[80%]" : "md:w-[40rem] w-[95%]"
           }`}
         >

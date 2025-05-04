@@ -25,7 +25,7 @@ const Education: React.FC<EducationProps> = ({ edu }) => {
   return (
     <li
       ref={targetRef}
-      className="theme-surface transition-all  p-3 rounded-lg shadow-xl relative my-4 overflow-hidden"
+      className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg shadow-md theme-surface transition-all p-3  relative my-4 overflow-hidden"
     >
       <article>
         <h1 className="transition-all theme-title-text font-semibold text-lg py-2">

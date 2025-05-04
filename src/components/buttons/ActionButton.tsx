@@ -17,7 +17,7 @@ const ActionButton: React.FC<ActionButtonProps> = ({
   return (
     <button
       disabled={isDisabled}
-      className={`flex justify-start transition-all items-center gap-1 theme-secondary-background text-white px-1 rounded-md cursor-pointer ${
+      className={`bg-white/10 backdrop-blur-sm border border-white/10 shadow-md flex justify-start transition-all items-center gap-1 theme-secondary-background text-white px-1 rounded-md cursor-pointer ${
         isDisabled ? "opacity-50 cursor-not-allowed" : ""
       } ${classes}`}
       onClick={action}
