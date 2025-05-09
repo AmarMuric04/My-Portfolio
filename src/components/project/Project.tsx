@@ -98,11 +98,17 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
 
       <article ref={targetRef}>
         {wasInView && (
-          <img
-            className="w-[5rem] h-[5rem] rounded-lg object-contain absolute opacity-50 right-5 top-5"
-            src={projectLogo}
-            alt={`${project.title} logo`}
-          />
+          <>
+            {projectLogo ? (
+              <img
+                className="w-[5rem] h-[5rem] rounded-lg object-contain absolute opacity-50 right-5 top-5"
+                src={projectLogo}
+                alt={`${project.title} logo`}
+              />
+            ) : (
+              <></>
+            )}
+          </>
         )}
 
         <div className="flex gap-x-2 items-center flex-wrap max-w-1/2 lg:max-w-4/5 mb-4 sm:mb-0">

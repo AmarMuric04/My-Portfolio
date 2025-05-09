@@ -43,7 +43,7 @@ export const education: Array<EducationType> = [
   {
     name: "Next.js 15 & React - The Complete Guide",
     institution: "Udemy",
-    progression: 20,
+    progression: 100,
     type: "Online Course",
     teacher: "Maximilian Schwarzmüller",
     skills: [
@@ -138,7 +138,7 @@ export const education: Array<EducationType> = [
   {
     name: "100 Days of Code: The Complete Python Pro Bootcamp (29%)",
     institution: "Udemy",
-    progression: 29,
+    progression: 85,
     type: "Online Course",
     teacher: "Dr. Angela Yu",
     skills: [
@@ -157,7 +157,7 @@ export const education: Array<EducationType> = [
   {
     name: "React & TypeScript - The Practical Guide",
     institution: "Udemy",
-    progression: 46,
+    progression: 100,
     type: "Online Course",
     teacher: "Academind (by Maximilian Schwarzmüller)",
     skills: [

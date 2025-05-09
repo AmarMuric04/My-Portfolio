@@ -2,6 +2,76 @@ import { SmallProjectType } from "../types/project";
 
 export const projects = [
   {
+    title: "GoVault",
+    type: "Password Manager",
+    myThoughts: `GoVault represents a significant milestone in my development journey—a secure and intuitive password manager built with Next.js. This project challenged me to delve deep into encryption techniques and user-centric design, ensuring both functionality and security. The experience honed my skills in full-stack development and reinforced the importance of safeguarding user data.`,
+    content:
+      "GoVault is a web-based password manager that allows users to securely store and manage their credentials. Key features include customizable password generation, detailed user statistics, and a responsive interface that prioritizes user experience.",
+    website: "https://govault.vercel.app",
+    github: "https://github.com/AmarMuric04/govault",
+    status: "Live",
+    duration: "March 1, 2025 - Present",
+    challenges:
+      "Implementing robust encryption and safety for password storage and ensuring seamless user interactions across various devices.",
+    keyFeatures: [
+      "Secure password storage",
+      "Customizable password generator",
+      "User statistics dashboard",
+      "Responsive and intuitive UI",
+    ],
+    userFeedback:
+      "Users have appreciated the application's clean design and the ease with which they can manage their credentials securely.",
+    futurePlans: [
+      "Introduce two-factor authentication",
+      "Develop a mobile application version",
+      "Implement password sharing capabilities",
+    ],
+    contributions:
+      "Sole developer responsible for both frontend and backend development, as well as UI/UX design.",
+    learningOutcomes:
+      "Gained in-depth knowledge of encryption methods, enhanced skills in Next.js, and a deeper understanding of secure authentication practices.",
+    deployment: "Deployed on Vercel with a secure backend infrastructure.",
+    accessibility:
+      " Designed with accessibility in mind, ensuring compatibility with screen readers and keyboard navigation.",
+    techs: {
+      frontend: ["Next.js", "React", "Tailwind CSS", "JavaScript"],
+      backend: ["Next.js"],
+      database: ["MongoDB", "Mongoose"],
+      other: ["JWT", "Redux"],
+    },
+  },
+  {
+    title: "Blog",
+    type: "Platform",
+    myThoughts:
+      "This was one of the MANY projects I made using Python, as one of my first projects in it, i chose to make something simple that I haven't made before, a Blog that I can come back to everytime I learn something new, or create something new.",
+    content:
+      "A modern and good looking blog website made with Flask and Jinja.",
+    website: "https://blog-p1sa.onrender.com/",
+    github: "https://github.com/AmarMuric04/blog",
+    status: "Live",
+    duration: "April 20, 2025 - April 21, 2025 (1 day)",
+    challenges: "Working with new techonologies and libraries.",
+    keyFeatures: [
+      "Full authentication system",
+      "Creating posts",
+      "Commenting on posts",
+    ],
+    userFeedback: "Users appreciated how simple the website is.",
+    futurePlans: ["Adding 2FA as part of the authentication process"],
+    contributions: "Sole developer of the project",
+    learningOutcomes:
+      "Learned how to use Flask and a bunch of other libraries related to it to make production-ready websites.",
+    deployment: "Deployed on onrender because the project uses sqlite",
+    accessibility: "Project is made so that it's accessible to anyone",
+    techs: {
+      frontend: ["Bootstrap"],
+      backend: ["Python", "Flask"],
+      database: ["Sqlite"],
+      other: [],
+    },
+  },
+  {
     title: "DineDivine",
     type: "Platform",
     myThoughts:
@@ -340,6 +410,18 @@ What makes this project so special to me is not just the functionality, but how 
 ];
 
 export const otherProjects: Array<SmallProjectType> = [
+  {
+    title: "Electron Boilerplate",
+    github:
+      "https://github.com/AmarMuric04/electron-react-bootstrap-zustand-express-boilerplate",
+    description:
+      "An Electron Boilerplate with a complete introduction process already done.",
+  },
+  {
+    title: "Next.js Auth Boilerplate",
+    github: "https://github.com/AmarMuric04/oauth-boilerplate",
+    description: "A full auth system with NextAuth, JWTs and Cookies.",
+  },
   {
     title: "Python snake",
     github: "https://github.com/AmarMuric04/Py/tree/main/Day_20/snake_game",
