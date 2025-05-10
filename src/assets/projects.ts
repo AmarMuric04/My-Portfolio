@@ -2,6 +2,46 @@ import { SmallProjectType } from "../types/project";
 
 export const projects = [
   {
+    title: "ModernShop",
+    type: "E-commerce",
+    myThoughts: `ModernShop reflects my goal to simplify the process of launching an online store. Built as a customizable e-commerce template using Next.js and modern tooling, it enables developers or entrepreneurs to plug in their backend and database with minimal configuration. This project reinforced my focus on scalability, modular design, and ease of developer adoption.`,
+    content:
+      "ModernShop is a fully functional e-commerce starter template that provides a robust foundation for online stores. With key features like dynamic product listings, cart functionality, and user authentication, it’s designed to be production-ready while easily adaptable to various business needs.",
+    website: "https://e-commerce-starting-template.vercel.app",
+    github: "https://github.com/AmarMuric04/e-commerce-template",
+    status: "Live",
+    duration: "May 10th, 2025 - May 10th, 2025 (Less than a day)",
+    challenges:
+      "Designing the project to be generic yet extensible, handling authentication securely, and creating flexible components that work across diverse use cases.",
+    keyFeatures: [
+      "Modular product and cart components",
+      "Authentication system with OAuth and credentials",
+      "Clean and responsive UI",
+      "Pre-built database models and routes",
+    ],
+    userFeedback:
+      "Developers have praised the project for its clean architecture, ease of setup, and developer-friendly design.",
+    futurePlans: [
+      "Add admin dashboard with analytics",
+      "Include support for payment gateways (Stripe, PayPal)",
+      "Expand with review and wishlist systems",
+    ],
+    contributions:
+      "Sole developer responsible for the entire project—frontend architecture, backend logic, authentication, and design.",
+    learningOutcomes:
+      "Strengthened my skills in building scalable, developer-first templates and reinforced best practices for modular design and authentication flows.",
+    deployment:
+      "Deployed on Vercel with flexible database integration support.",
+    accessibility:
+      "Designed with accessibility considerations, supporting keyboard navigation and screen readers.",
+    techs: {
+      frontend: ["Next.js", "React", "Tailwind CSS", "JavaScript"],
+      backend: ["Next.js"],
+      database: ["Postgresql", "Neon", "Drizzle"],
+      other: ["JWT"],
+    },
+  },
+  {
     title: "GoVault",
     type: "Password Manager",
     myThoughts: `GoVault represents a significant milestone in my development journey—a secure and intuitive password manager built with Next.js. This project challenged me to delve deep into encryption techniques and user-centric design, ensuring both functionality and security. The experience honed my skills in full-stack development and reinforced the importance of safeguarding user data.`,
@@ -10,7 +50,7 @@ export const projects = [
     website: "https://govault.vercel.app",
     github: "https://github.com/AmarMuric04/govault",
     status: "Live",
-    duration: "March 1, 2025 - Present",
+    duration: "March 1st, 2025 - Present",
     challenges:
       "Implementing robust encryption and safety for password storage and ensuring seamless user interactions across various devices.",
     keyFeatures: [
@@ -50,7 +90,7 @@ export const projects = [
     website: "https://blog-p1sa.onrender.com/",
     github: "https://github.com/AmarMuric04/blog",
     status: "Live",
-    duration: "April 20, 2025 - April 21, 2025 (1 day)",
+    duration: "April 20th, 2025 - April 21st, 2025 (1 day)",
     challenges: "Working with new techonologies and libraries.",
     keyFeatures: [
       "Full authentication system",
@@ -419,7 +459,7 @@ export const otherProjects: Array<SmallProjectType> = [
   },
   {
     title: "Next.js Auth Boilerplate",
-    github: "https://github.com/AmarMuric04/oauth-boilerplate",
+    github: "https://github.com/AmarMuric04/auth-boilerplate",
     description: "A full auth system with NextAuth, JWTs and Cookies.",
   },
   {
