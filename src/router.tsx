@@ -5,6 +5,7 @@ import Root from "./components/Root.tsx";
 import Home from "./pages/Home";
 import Hi from "./pages/Hi.tsx";
 import Education from "./pages/Education.tsx";
+import Experience from "./pages/Experience.tsx";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
       { path: "projects", element: <Projects /> },
       { path: "hi", element: <Hi /> },
       { path: "education", element: <Education /> },
+      { path: "experience", element: <Experience /> },
     ],
   },
   {

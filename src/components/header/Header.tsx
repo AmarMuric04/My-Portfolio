@@ -8,6 +8,7 @@ import {
 import NavBarItem from "./NavBarItem";
 import useIntersectionObserver from "../../hooks/useIntersectionObserver";
 import Toggle from "../ToggleTheme";
+import { Briefcase } from "lucide-react";
 
 const NavBarText: React.FC<{
   children: React.ReactNode;
@@ -41,11 +42,11 @@ const Header: React.FC<{
       <header className="mb-28" ref={targetRef}>
         <nav
           className={`bg-white/10 backdrop-blur-sm border border-white/10 shadow-md theme-surface select-none h-[3.5rem] top-4 transition-all rounded-full fixed z-50 left-1/2 -translate-x-1/2 pr-4 overflow-hidden ${
-            !isIntersecting ? "md:w-[30rem] w-[80%]" : "md:w-[40rem] w-[95%]"
+            !isIntersecting ? "md:w-[38rem] w-[80%]" : "md:w-[45rem] w-[95%]"
           }`}
         >
-          <div className="flex w-full justify-between h-full items-center">
-            <ul className="flex gap-4 rounded-full h-full w-full sm:w-auto transition-all duration-300">
+          <div className="flex justify-between items-center w-full h-full">
+            <ul className="flex gap-4 rounded-full w-full sm:w-auto h-full transition-all duration-300">
               <Toggle
                 handleChange={changeTheme}
                 isChecked={isCorrectTheme}
@@ -62,6 +63,10 @@ const Header: React.FC<{
               <NavBarItem to="/education">
                 <EducationSVG />
                 <NavBarText>Education</NavBarText>
+              </NavBarItem>
+              <NavBarItem to="/experience">
+                <Briefcase />
+                <NavBarText>Experience</NavBarText>
               </NavBarItem>
             </ul>
 
