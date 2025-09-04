@@ -3,10 +3,14 @@ import { Dispatch, SetStateAction } from "react";
 export const handleToggleInclusion = (
   key: string,
   setMustInclude: Dispatch<SetStateAction<string[]>>,
-  setMustNotInclude: Dispatch<SetStateAction<string[]>>
+  setMustNotInclude: Dispatch<SetStateAction<string[]>>,
+  notIncluded: boolean
 ) => {
   setMustInclude((prevMustInclude) => {
     if (prevMustInclude.includes(key)) {
+      return prevMustInclude.filter((prev) => prev !== key);
+    } else if (notIncluded) {
+      setMustNotInclude((prev) => prev.filter((item) => item !== key));
       return prevMustInclude.filter((prev) => prev !== key);
     } else {
       setMustNotInclude((prev) => prev.filter((item) => item !== key));
@@ -21,6 +25,7 @@ export const handleDoubleClickInclusion = (
   setMustNotInclude: Dispatch<SetStateAction<string[]>>
 ) => {
   setMustInclude((prev) => prev.filter((item) => item !== key));
+
   setMustNotInclude((prev) => {
     if (prev.includes(key)) {
       return prev.filter((item) => item !== key);

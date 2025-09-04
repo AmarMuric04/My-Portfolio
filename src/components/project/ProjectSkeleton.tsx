@@ -7,8 +7,8 @@ const highlightColor = "#4a5568";
 
 const ProjectItemSkeleton: React.FC = () => {
   return (
-    <li className="my-4 theme-surface theme-primary-text transition-all p-3 rounded-lg shadow-xl relative">
-      <div className="mb-4">
+    <li className="relative bg-white/10 shadow-md p-3 border border-white/10 rounded-lg transition-all list-none theme-surface theme-primary-text">
+      <div className="mb-2">
         <Skeleton
           height={30}
           width={200}
@@ -16,81 +16,93 @@ const ProjectItemSkeleton: React.FC = () => {
           highlightColor={highlightColor}
         />
       </div>
-      <div className="mb-4">
+      <div className="mb-2">
         <Skeleton
-          height={20}
-          width={100}
+          height={24}
+          width={65}
           inline={true}
-          style={{ marginRight: "0.5rem" }}
-          baseColor={baseColor}
-          highlightColor={highlightColor}
-        />
-        <Skeleton
-          height={20}
-          width={100}
-          inline={true}
+          style={{ marginRight: "0.5rem", borderRadius: "48px" }}
           baseColor={baseColor}
           highlightColor={highlightColor}
         />
       </div>
-      <div className="mb-4">
+      <div className="mb-4 w-1/2">
         <Skeleton
           count={3}
-          baseColor={baseColor}
-          highlightColor={highlightColor}
-        />
-      </div>
-      <div className="mb-4 flex gap-2">
-        <Skeleton
-          height={150}
-          width={125}
+          height={16}
           baseColor={baseColor}
           highlightColor={highlightColor}
         />
         <Skeleton
-          height={150}
-          width={125}
+          height={16}
+          width={70}
           baseColor={baseColor}
           highlightColor={highlightColor}
         />
       </div>
-      <div className="flex justify-between items-center">
+      <div className="flex gap-2 mb-4">
+        <Skeleton
+          height={180}
+          width={148}
+          style={{ borderRadius: "12px" }}
+          baseColor={baseColor}
+          highlightColor={highlightColor}
+        />
+        <Skeleton
+          height={180}
+          width={148}
+          style={{ borderRadius: "12px" }}
+          baseColor={baseColor}
+          highlightColor={highlightColor}
+        />
+        <Skeleton
+          height={180}
+          width={148}
+          style={{ borderRadius: "12px" }}
+          baseColor={baseColor}
+          highlightColor={highlightColor}
+        />
+        <Skeleton
+          height={180}
+          width={148}
+          style={{ borderRadius: "12px" }}
+          baseColor={baseColor}
+          highlightColor={highlightColor}
+        />
+      </div>
+      <div>
         <div className="flex gap-1">
           <div>
             <Skeleton
-              height={30}
-              width={100}
+              height={27.5}
+              width={125}
               baseColor={baseColor}
               highlightColor={highlightColor}
             />
             <Skeleton
-              height={30}
-              width={100}
+              height={27.5}
+              width={125}
               baseColor={baseColor}
               highlightColor={highlightColor}
             />
           </div>
           <div>
             <Skeleton
-              height={30}
-              width={100}
-              baseColor={baseColor}
-              highlightColor={highlightColor}
-            />
-            <Skeleton
-              height={30}
-              width={100}
+              height={27.5}
+              width={125}
               baseColor={baseColor}
               highlightColor={highlightColor}
             />
           </div>
         </div>
-        <Skeleton
-          height={20}
-          width={100}
-          baseColor={baseColor}
-          highlightColor={highlightColor}
-        />
+        <div className="float-right">
+          <Skeleton
+            height={27.5}
+            width={125}
+            baseColor={baseColor}
+            highlightColor={highlightColor}
+          />
+        </div>
       </div>
     </li>
   );

@@ -77,7 +77,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
     "/" + project.title.replace(" ", "").toLowerCase() + "-logo.png";
 
   return (
-    <li className="bg-white/10 border border-white/10 rounded-lg shadow-md theme-surface theme-primary-text transition-all p-3 relative">
+    <li className="relative bg-white/10 shadow-md p-3 border border-white/10 rounded-lg transition-all theme-surface theme-primary-text">
       {Object.values(ModalType).map((modal) => (
         <Modal
           key={modal}
@@ -101,7 +101,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
           <>
             {projectLogo ? (
               <img
-                className="w-[5rem] h-[5rem] rounded-lg object-contain absolute opacity-50 right-5 top-5"
+                className="top-5 right-5 absolute opacity-50 rounded-lg w-[5rem] h-[5rem] object-contain"
                 src={projectLogo}
                 alt={`${project.title} logo`}
               />
@@ -111,17 +111,17 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
           </>
         )}
 
-        <div className="flex gap-x-2 items-center flex-wrap max-w-1/2 lg:max-w-4/5 mb-4 sm:mb-0">
-          <p className="theme-title-text font-semibold text-lg py-2 transition-all">
+        <div className="flex flex-wrap items-center gap-x-2 mb-4 sm:mb-0 max-w-1/2 lg:max-w-4/5">
+          <p className="py-2 font-semibold text-lg transition-all theme-title-text">
             {project.title}
           </p>
           {project.info && (
-            <p className="cursor-pointer border-2 theme-primary-text-border transition-all text-xs px-1 theme-text-primary rounded-full">
+            <p className="px-1 theme-primary-text-border border-2 rounded-full theme-text-primary text-xs transition-all cursor-pointer">
               {project.info}
             </p>
           )}
           {project.type && (
-            <p className="cursor-pointer border-2 theme-primary-text-border transition-all text-xs px-1 theme-text-primary rounded-full">
+            <p className="px-1 theme-primary-text-border border-2 rounded-full theme-text-primary text-xs transition-all cursor-pointer">
               {project.type}
             </p>
           )}
@@ -129,7 +129,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
 
         <ProjectStatus status={project.status} />
 
-        <div className="relative sm:max-w-4/5 flex flex-col items-start">
+        <div className="relative flex flex-col items-start sm:max-w-4/5">
           <div
             className={`transition-all ${
               !isContentExpanded ? "line-clamp-3" : ""
@@ -139,7 +139,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
           </div>
           <button
             onClick={() => setIsContentExpanded(!isContentExpanded)}
-            className="transition-all theme-text-primary hover:underline cursor-pointer theme-surface"
+            className="theme-text-primary hover:underline transition-all cursor-pointer theme-surface"
           >
             {isContentExpanded ? "show less" : "more...."}
           </button>
@@ -147,7 +147,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
 
         {project.techs && <ProjectTech techs={project.techs} />}
 
-        <div className="flex justify-between w-full gap-2 sm:gap-0 items-center text-sm mt-1 flex-col-reverse sm:flex-row">
+        <div className="flex sm:flex-row flex-col-reverse justify-between items-center gap-2 sm:gap-0 mt-1 w-full text-sm">
           <div className="flex gap-1 w-full">
             <ActionButton
               classes="py-1 w-1/2 sm:w-[8rem]"
@@ -173,7 +173,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
             </ActionButton>
           </div>
           <p
-            className="select-none text-xs flex-shrink-0"
+            className="flex-shrink-0 text-xs select-none"
             aria-label="Duration"
             title="Duration"
           >
@@ -183,7 +183,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
 
         {isShowingFeatures && (
           <div>
-            <ul className="theme-background p-2 rounded-xl my-4 list-decimal">
+            <ul className="my-4 p-2 rounded-xl list-decimal theme-background">
               {project.keyFeatures.map((feature) => (
                 <li className="ml-5" key={feature + project.title}>
                   <pre>{feature}</pre>
@@ -193,7 +193,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
           </div>
         )}
 
-        <div className="flex justify-between w-full gap-2 sm:gap-0 items-center text-sm mt-1 flex-wrap">
+        <div className="flex flex-wrap justify-between items-center gap-2 sm:gap-0 mt-1 w-full text-sm">
           <div className="flex gap-1 w-full sm:w-auto">
             {images?.length && (
               <ActionButton
@@ -220,7 +220,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
               <p>My Thoughts</p>
             </ActionButton>
           </div>
-          <div className="flex gap-4 items-center flex-shrink-0 justify-center w-full sm:w-auto sm:justify-start">
+          <div className="flex flex-shrink-0 justify-center sm:justify-start items-center gap-4 w-full sm:w-auto">
             {project.website && (
               <ExternalLinkButton href={project.website} icon={WorldSVG}>
                 Visit Website

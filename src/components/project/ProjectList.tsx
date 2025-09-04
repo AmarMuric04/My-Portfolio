@@ -89,10 +89,10 @@ export default function ProjectList() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="theme-surface p-3 rounded-lg shadow-xl flex flex-col"
+            className="flex flex-col shadow-xl p-3 rounded-lg theme-surface"
           >
-            <section className="py-2 border-b-2 theme-border">
-              <div className="flex gap-2 mb-2 items-center">
+            <section className="py-2 theme-border border-b-2">
+              <div className="flex items-center gap-2 mb-2">
                 <FilterSVG />
                 <p>
                   Filter by inclusion{" "}
@@ -101,26 +101,27 @@ export default function ProjectList() {
                   </em>
                 </p>
               </div>
-              <ul className="flex gap-2 flex-wrap">
+              <ul className="flex flex-wrap gap-2">
                 {Object.keys(techSVGS).map((key) => {
                   const Icon = techSVGS[key];
                   const included = mustInclude.includes(key);
                   const excluded = mustNotInclude.includes(key);
                   return (
-                    <li className="flex gap-2 items-center" key={key}>
+                    <li className="flex items-center gap-2" key={key}>
                       <button
-                        className={`p-2 rounded-full hover:bg-[#3C3D37] cursor-pointer ${
+                        className={`size-10 border-2 grid place-items-center rounded-full hover:bg-[#3C3D37] cursor-pointer ${
                           included
-                            ? "theme-accent-background"
+                            ? "theme-accent-background border-green-500"
                             : excluded
-                            ? "bg-[#b91c1c]"
-                            : ""
+                            ? "border-red-500 hover:bg-[#b91c1c70]"
+                            : "border-transparent"
                         }`}
                         onClick={() =>
                           Filter.handleToggleInclusion(
                             key,
                             setMustInclude,
-                            setMustNotInclude
+                            setMustNotInclude,
+                            excluded
                           )
                         }
                         onDoubleClick={() =>
@@ -139,8 +140,8 @@ export default function ProjectList() {
               </ul>
             </section>
 
-            <section className="py-2 border-t-2 theme-border">
-              <div className="flex gap-2 mb-2 items-center">
+            <section className="py-2 theme-border border-t-2">
+              <div className="flex items-center gap-2 mb-2">
                 <FilterSVG />
                 <p>
                   Filter by category{" "}
@@ -149,7 +150,7 @@ export default function ProjectList() {
                   </em>
                 </p>
               </div>
-              <ul className="flex gap-2 flex-wrap">
+              <ul className="flex flex-wrap gap-2">
                 {availableCategories.map((category) => {
                   const isSelected = selectedCategories.includes(category);
                   const isExcluded = excludedCategories.includes(category);
@@ -188,7 +189,7 @@ export default function ProjectList() {
           </motion.section>
         )}
       </AnimatePresence>
-      <ul className="my-4 flex flex-col gap-4">
+      <ul className="flex flex-col gap-4 my-4">
         {showedProjects.map((project) => (
           <Project key={project.title} project={project} />
         ))}
