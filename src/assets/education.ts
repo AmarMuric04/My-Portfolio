@@ -4,7 +4,7 @@ export const education: Array<EducationType> = [
   {
     name: "Software Engineering Student",
     institution: "State University of Novi Pazar, Serbia",
-    progression: 33.3,
+    progression: 50,
     type: "University Course",
     teacher: "N/A",
     skills: [
@@ -60,9 +60,17 @@ export const education: Array<EducationType> = [
     ],
   },
   {
+    name: "React Native - Frontend Masters",
+    institution: "Udemy",
+    progression: 62,
+    type: "Online Course",
+    teacher: "Frontend Masters",
+    skills: ["React Native", "XCode", "Mobile Development"],
+  },
+  {
     name: "MongoDB - The Complete Developer's Guide 2025",
     institution: "Udemy",
-    progression: 61,
+    progression: 100,
     type: "Online Course",
     teacher: "Academind (by Maximilian Schwarzmüller)",
     skills: [
@@ -136,9 +144,9 @@ export const education: Array<EducationType> = [
     ],
   },
   {
-    name: "100 Days of Code: The Complete Python Pro Bootcamp (29%)",
+    name: "100 Days of Code: The Complete Python Pro Bootcamp",
     institution: "Udemy",
-    progression: 85,
+    progression: 90,
     type: "Online Course",
     teacher: "Dr. Angela Yu",
     skills: [
