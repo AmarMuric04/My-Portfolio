@@ -1,19 +1,19 @@
 import { useEffect, useState, useRef } from "react";
 
 interface IntersectionObserverProps {
-  threshold?: number;
   root?: Element | null;
   rootMargin?: string;
+  threshold?: number;
 }
 
-const useIntersectionObserver = <T extends HTMLElement = HTMLElement>({
+export const useIntersectionObserver = <T extends HTMLElement = HTMLElement>({
+  rootMargin = "0px",
   threshold = 0.1,
   root = null,
-  rootMargin = "0px",
 }: IntersectionObserverProps = {}) => {
   const [isIntersecting, setIsIntersecting] = useState<boolean>(false);
   const [wasInView, setWasInView] = useState<boolean>(false);
-  const targetRef = useRef<T | null>(null);
+  const targetRef = useRef<null | T>(null);
 
   useEffect(() => {
     const target = targetRef.current;
@@ -24,7 +24,7 @@ const useIntersectionObserver = <T extends HTMLElement = HTMLElement>({
         setIsIntersecting(entry.isIntersecting);
         if (entry.isIntersecting) setWasInView(true);
       },
-      { threshold, root, rootMargin }
+      { rootMargin, threshold, root }
     );
 
     observer.observe(target);
@@ -35,7 +35,5 @@ const useIntersectionObserver = <T extends HTMLElement = HTMLElement>({
     };
   }, [threshold, root, rootMargin]);
 
-  return { targetRef, isIntersecting, wasInView };
+  return { isIntersecting, targetRef, wasInView };
 };
-
-export default useIntersectionObserver;

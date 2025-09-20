@@ -1,16 +1,16 @@
-import { otherProjects } from "../../assets/projects";
-import { SmallProjectType } from "../../types/project";
 import ClassicExternalLink from "../buttons/ClassicExternalLink";
+import { SmallProjectType } from "../../types/project";
+import { otherProjects } from "../../assets/WORK";
 
 const SmallProjectList = () => {
   return (
     <ul className="flex flex-col gap-2">
       {otherProjects.map((project: SmallProjectType) => (
         <ClassicExternalLink
-          title={project.title}
-          description={project.description}
-          href={project.github}
           key={project.title + project.description}
+          description={project.description}
+          title={project.title}
+          href={project.github}
         />
       ))}
     </ul>

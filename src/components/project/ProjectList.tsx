@@ -1,12 +1,13 @@
-import Project from "./Project";
-import { projects } from "../../assets/projects";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { FilterSVG, MiniArrowDownSVG } from "../../assets/svgs";
+
+import { MiniArrowDownSVG, FilterSVG } from "../../assets/svgs";
+import * as Filter from "../../actions/filter.actions";
 import { techSVGS } from "../../assets/projectTechs";
 import ActionButton from "../buttons/ActionButton";
-import { motion, AnimatePresence } from "framer-motion";
-import * as Filter from "../../actions/filter.actions";
 import { ProjectType } from "../../types/project";
+import { projects } from "../../assets/WORK";
+import Project from "./Project";
 
 export default function ProjectList() {
   const [addingFilter, setAddingFilter] = useState<boolean>(false);
@@ -73,8 +74,8 @@ export default function ProjectList() {
   return (
     <>
       <ActionButton
-        classes="my-4 px-2"
-        action={() => setAddingFilter(!addingFilter)}
+        onClick={() => setAddingFilter(!addingFilter)}
+        className="my-4 px-2"
       >
         <div className={`transition-all ${addingFilter ? "rotate-180" : ""}`}>
           <MiniArrowDownSVG />
@@ -85,13 +86,13 @@ export default function ProjectList() {
       <AnimatePresence>
         {addingFilter && (
           <motion.section
+            className="flex flex-col shadow-xl p-3 rounded-lg"
+            transition={{ ease: "easeOut", duration: 0.3 }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="flex flex-col shadow-xl p-3 rounded-lg theme-surface"
           >
-            <section className="py-2 theme-border border-b-2">
+            <section className="py-2 border-b-2">
               <div className="flex items-center gap-2 mb-2">
                 <FilterSVG />
                 <p>
@@ -111,10 +112,10 @@ export default function ProjectList() {
                       <button
                         className={`size-10 border-2 grid place-items-center rounded-full hover:bg-[#3C3D37] cursor-pointer ${
                           included
-                            ? "theme-accent-background border-green-500"
+                            ? "border-green-500"
                             : excluded
-                            ? "border-red-500 hover:bg-[#b91c1c70]"
-                            : "border-transparent"
+                              ? "border-red-500 hover:bg-[#b91c1c70]"
+                              : "border-transparent"
                         }`}
                         onClick={() =>
                           Filter.handleToggleInclusion(
@@ -140,7 +141,7 @@ export default function ProjectList() {
               </ul>
             </section>
 
-            <section className="py-2 theme-border border-t-2">
+            <section className="py-2 border-t-2">
               <div className="flex items-center gap-2 mb-2">
                 <FilterSVG />
                 <p>
@@ -157,13 +158,6 @@ export default function ProjectList() {
                   return (
                     <li key={category}>
                       <button
-                        onClick={() =>
-                          Filter.handleToggleCategory(
-                            category,
-                            setSelectedCategories,
-                            setExcludedCategories
-                          )
-                        }
                         onDoubleClick={() =>
                           Filter.handleDoubleClickCategory(
                             category,
@@ -171,12 +165,15 @@ export default function ProjectList() {
                             setExcludedCategories
                           )
                         }
+                        onClick={() =>
+                          Filter.handleToggleCategory(
+                            category,
+                            setSelectedCategories,
+                            setExcludedCategories
+                          )
+                        }
                         className={`px-2 py-1 cursor-pointer rounded-md hover:bg-[#53594E] transition-colors ${
-                          isSelected
-                            ? "theme-border-background"
-                            : isExcluded
-                            ? "bg-[#b91c1c]"
-                            : "theme-secondary-background"
+                          isSelected ? "" : isExcluded ? "bg-[#b91c1c]" : ""
                         }`}
                       >
                         {category}

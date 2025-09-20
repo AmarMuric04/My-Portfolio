@@ -1,4 +1,5 @@
 import React from "react";
+
 import { techSVGS } from "../../assets/projectTechs";
 import { TechsType } from "../../types/tech";
 
@@ -15,26 +16,26 @@ const ProjectTech: React.FC<ProjectTechProps> = React.memo(({ techs }) => {
 
           return (
             <div
-              className="transition-all theme-background w-[24.2%] min-w-[125px] min-h-[150px] rounded-xl p-2 flex-grow lg:flex-none"
+              className="flex-grow lg:flex-none p-2 rounded-xl w-[24.2%] min-w-[125px] min-h-[150px] transition-all"
               key={category}
             >
-              <p className="text-sm theme-accent-text uppercase mb-2">
+              <p className="mb-2 text-sm uppercase">
                 {category}
               </p>
-              <div className="flex items-center gap-4 flex-wrap max-w-full overflow-hidden">
+              <div className="flex flex-wrap items-center gap-4 max-w-full overflow-hidden">
                 {techList.map((tech: string) => {
                   const Icon = techSVGS[tech];
                   return (
                     <div
+                      className="flex flex-shrink-0 items-center gap-2 max-w-full overflow-hidden text-sm"
                       key={tech}
-                      className="flex items-center gap-2 text-sm flex-shrink-0 overflow-hidden max-w-full"
                     >
                       {Icon ? (
-                        <Icon className="w-6 h-6 flex-shrink-0" />
+                        <Icon className="flex-shrink-0 w-6 h-6" />
                       ) : (
-                        <span className="w-6 h-6 flex-shrink-0" />
+                        <span className="flex-shrink-0 w-6 h-6" />
                       )}
-                      <span className="truncate whitespace-nowrap overflow-hidden text-ellipsis max-w-full">
+                      <span className="max-w-full overflow-hidden truncate text-ellipsis whitespace-nowrap">
                         {tech}
                       </span>
                     </div>

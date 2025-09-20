@@ -1,5 +1,6 @@
 import React from "react";
-import { ArchiveSVG, DevelopmentSVG, LiveSVG } from "../../assets/svgs";
+
+import { DevelopmentSVG, ArchiveSVG, LiveSVG } from "../../assets/svgs";
 import StatusButton from "../buttons/StatusButton";
 
 interface ProjectStatusProps {
@@ -10,13 +11,13 @@ const ProjectStatus: React.FC<ProjectStatusProps> = ({ status }) => {
   return (
     <div className="flex mb-2">
       {status === "Live" && (
-        <StatusButton color="#df2038" icon={LiveSVG} status={status} />
+        <StatusButton color="#df2038" status={status} icon={LiveSVG} />
       )}
       {status === "Development" && (
-        <StatusButton color="yellow" icon={DevelopmentSVG} status={status} />
+        <StatusButton icon={DevelopmentSVG} status={status} color="yellow" />
       )}
       {status === "Archived" && (
-        <StatusButton color="gray" icon={ArchiveSVG} status={status} />
+        <StatusButton icon={ArchiveSVG} status={status} color="gray" />
       )}
     </div>
   );

@@ -1,40 +1,39 @@
+import { SetStateAction, Dispatch } from "react";
 import React from "react";
-import { Dispatch, SetStateAction } from "react";
+
 import { GithubSVG, WorldSVG } from "../../assets/svgs";
-import ProjectTech from "./ProjectTech";
-import ProjectStatus from "./ProjectStatus";
 import ActionButton from "../buttons/ActionButton";
 import { ProjectType } from "../../types/project";
 import { ModalType } from "../../types/modal";
+import ProjectStatus from "./ProjectStatus";
+import ProjectTech from "./ProjectTech";
 
 interface MoreModalProps {
-  project: ProjectType;
   setOpenedModal: Dispatch<SetStateAction<Array<ModalType>>>;
   openedModal: Array<ModalType>;
+  project: ProjectType;
 }
 
 const MoreModal: React.FC<MoreModalProps> = ({
-  project,
   setOpenedModal,
   openedModal,
+  project,
 }) => {
   if (!project) throw new Error("A project is required to use this modal");
 
   return (
     <>
-      <section className="flex justify-between items-center flex-wrap gap-4">
-        <h1 className="text-lg theme-title-text font-semibold">
-          {project.title}
-        </h1>
+      <section className="flex flex-wrap justify-between items-center gap-4">
+        <h1 className="font-semibold text-lg">{project.title}</h1>
         <div className="flex gap-4">
           <ProjectStatus status={project.status} />
           {project.github && (
-            <a target="_blank" href={project.github}>
+            <a href={project.github} target="_blank">
               <GithubSVG />
             </a>
           )}
           {project.website && (
-            <a target="_blank" href={project.website}>
+            <a href={project.website} target="_blank">
               <WorldSVG />
             </a>
           )}
@@ -48,8 +47,10 @@ const MoreModal: React.FC<MoreModalProps> = ({
           {'"'}
         </em>
         <ActionButton
-          action={() => setOpenedModal([...openedModal, ModalType.MY_THOUGHTS])}
-          classes="my-4 px-3"
+          onClick={() =>
+            setOpenedModal([...openedModal, ModalType.MY_THOUGHTS])
+          }
+          className="my-4 px-3"
         >
           My thoughts on this project
         </ActionButton>

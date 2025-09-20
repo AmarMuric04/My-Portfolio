@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+
 import {
-  GithubSVG,
   MiniArrowDownSVG,
-  PlusSVG,
+  GithubSVG,
   WorldSVG,
+  PlusSVG,
 } from "../../assets/svgs";
-import Highlights from "./Highlights";
-import ActionButton from "../buttons/ActionButton";
-import ExternalLinkButton from "../buttons/ExternalLinkButton";
 import useIntersectionObserver from "../../hooks/useIntersectionObserver";
-import Modal from "../modal/Modal";
+import ExternalLinkButton from "../buttons/ExternalLinkButton";
+import { projectImages } from "../../assets/WORK_HIGHLIGHTS";
+import { projectREADMEs } from "../../assets/WORK_READMES";
+import ActionButton from "../buttons/ActionButton";
+import { ProjectType } from "../../types/project";
+import MyThoughtsModal from "./MyThoughtsModal";
+import { ModalType } from "../../types/modal";
 import ProjectStatus from "./ProjectStatus";
 import ProjectTech from "./ProjectTech";
-import ReactMarkdown from "react-markdown";
-import { projectREADMEs } from "../../assets/projectREADMEs";
+import Highlights from "./Highlights";
 import MoreModal from "./MoreModal";
-import MyThoughtsModal from "./MyThoughtsModal";
-import { ProjectType } from "../../types/project";
-import { ModalType } from "../../types/modal";
-import { projectImages } from "../../assets/projectHighlights";
+import Modal from "../modal/Modal";
+import { cx } from "../../utility";
 
 interface ProjectProps {
   project: ProjectType;
@@ -30,7 +32,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
   const [isShowingFeatures, setIsShowingFeatures] = useState<boolean>(false);
   const [wasInView, setWasInView] = useState<boolean>(false);
   const [openedModal, setOpenedModal] = useState<Array<ModalType>>([]);
-  const { targetRef, isIntersecting } = useIntersectionObserver();
+  const { isIntersecting, targetRef } = useIntersectionObserver();
   const [section, setSection] = useState<number>(0);
   const images = projectImages[project.title.toLowerCase()];
 
@@ -48,18 +50,18 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
 
   const renderModalContent = (modal: ModalType) => {
     switch (modal) {
+      case ModalType.MY_THOUGHTS:
+        return <MyThoughtsModal project={project} />;
       case ModalType.README:
         return <ReactMarkdown>{projectREADMEs[project.title]}</ReactMarkdown>;
       case ModalType.MORE:
         return (
           <MoreModal
-            project={project}
-            openedModal={openedModal}
             setOpenedModal={setOpenedModal}
+            openedModal={openedModal}
+            project={project}
           />
         );
-      case ModalType.MY_THOUGHTS:
-        return <MyThoughtsModal project={project} />;
       default:
         return null;
     }
@@ -77,20 +79,20 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
     "/" + project.title.replace(" ", "").toLowerCase() + "-logo.png";
 
   return (
-    <li className="relative bg-white/10 shadow-md p-3 border border-white/10 rounded-lg transition-all theme-surface theme-primary-text">
+    <li className="relative bg-white/10 shadow-md p-3 border border-white/10 rounded-lg transition-all">
       {Object.values(ModalType).map((modal) => (
         <Modal
-          key={modal}
-          open={openedModal}
-          setIsOpen={() => toggleModal(modal)}
-          id={modal}
           title={
             modal === ModalType.README
               ? "README.md"
               : modal === ModalType.MORE
-              ? "More Information"
-              : "My Thoughts on this project"
+                ? "More Information"
+                : "My Thoughts on this project"
           }
+          setIsOpen={() => toggleModal(modal)}
+          open={openedModal}
+          key={modal}
+          id={modal}
         >
           {renderModalContent(modal)}
         </Modal>
@@ -102,8 +104,8 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
             {projectLogo ? (
               <img
                 className="top-5 right-5 absolute opacity-50 rounded-lg w-[5rem] h-[5rem] object-contain"
-                src={projectLogo}
                 alt={`${project.title} logo`}
+                src={projectLogo}
               />
             ) : (
               <></>
@@ -112,16 +114,16 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
         )}
 
         <div className="flex flex-wrap items-center gap-x-2 mb-4 sm:mb-0 max-w-1/2 lg:max-w-4/5">
-          <p className="py-2 font-semibold text-lg transition-all theme-title-text">
+          <p className="py-2 font-semibold text-lg transition-all">
             {project.title}
           </p>
           {project.info && (
-            <p className="px-1 theme-primary-text-border border-2 rounded-full theme-text-primary text-xs transition-all cursor-pointer">
+            <p className="px-1 border-2 rounded-full text-xs transition-all cursor-pointer">
               {project.info}
             </p>
           )}
           {project.type && (
-            <p className="px-1 theme-primary-text-border border-2 rounded-full theme-text-primary text-xs transition-all cursor-pointer">
+            <p className="px-1 border-2 rounded-full text-xs transition-all cursor-pointer">
               {project.type}
             </p>
           )}
@@ -131,15 +133,15 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
 
         <div className="relative flex flex-col items-start sm:max-w-4/5">
           <div
-            className={`transition-all ${
-              !isContentExpanded ? "line-clamp-3" : ""
-            } pr-12`}
+            className={cx("transition-all pr-12", {
+              "line-clamp-3": !isContentExpanded,
+            })}
           >
             {project.content}
           </div>
           <button
+            className="hover:underline transition-all cursor-pointer"
             onClick={() => setIsContentExpanded(!isContentExpanded)}
-            className="theme-text-primary hover:underline transition-all cursor-pointer theme-surface"
           >
             {isContentExpanded ? "show less" : "more...."}
           </button>
@@ -150,8 +152,8 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
         <div className="flex sm:flex-row flex-col-reverse justify-between items-center gap-2 sm:gap-0 mt-1 w-full text-sm">
           <div className="flex gap-1 w-full">
             <ActionButton
-              classes="py-1 w-1/2 sm:w-[8rem]"
-              action={() => setIsShowingFeatures(!isShowingFeatures)}
+              onClick={() => setIsShowingFeatures(!isShowingFeatures)}
+              className="py-1 w-1/2 sm:w-[8rem]"
             >
               <div
                 className={`transition-all ${
@@ -163,8 +165,8 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
               <p>Features</p>
             </ActionButton>
             <ActionButton
-              classes="py-1 w-1/2 sm:w-[8rem]"
-              action={() => toggleModal(ModalType.MORE)}
+              onClick={() => toggleModal(ModalType.MORE)}
+              className="py-1 w-1/2 sm:w-[8rem]"
             >
               <div className="transition-all">
                 <PlusSVG />
@@ -183,9 +185,9 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
 
         {isShowingFeatures && (
           <div>
-            <ul className="my-4 p-2 rounded-xl list-decimal theme-background">
+            <ul className="my-4 p-2 rounded-xl list-decimal">
               {project.keyFeatures.map((feature) => (
-                <li className="ml-5" key={feature + project.title}>
+                <li key={feature + project.title} className="ml-5">
                   <pre>{feature}</pre>
                 </li>
               ))}
@@ -197,8 +199,8 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
           <div className="flex gap-1 w-full sm:w-auto">
             {images?.length && (
               <ActionButton
-                classes="py-1 w-1/2 sm:w-[8rem]"
-                action={() => setHideHighlights(!hideHighlights)}
+                onClick={() => setHideHighlights(!hideHighlights)}
+                className="py-1 w-1/2 sm:w-[8rem]"
               >
                 <div
                   className={`transition-all ${
@@ -211,8 +213,8 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
               </ActionButton>
             )}
             <ActionButton
-              classes="py-1 w-1/2 sm:w-[8rem]"
-              action={() => toggleModal(ModalType.MY_THOUGHTS)}
+              onClick={() => toggleModal(ModalType.MY_THOUGHTS)}
+              className="py-1 w-1/2 sm:w-[8rem]"
             >
               <div className="transition-all">
                 <PlusSVG />
@@ -236,17 +238,17 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
 
         {!hideHighlights && (
           <Highlights
-            title={project.title}
-            images={images}
-            section={section}
-            setSection={setSection}
             handleClick={handleClick}
+            setSection={setSection}
+            title={project.title}
+            section={section}
+            images={images}
           />
         )}
 
         <ActionButton
-          action={() => toggleModal(ModalType.README)}
-          classes="mt-4 float-right"
+          onClick={() => toggleModal(ModalType.README)}
+          className="float-right mt-4"
         >
           README.md
         </ActionButton>

@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { SetStateAction, Dispatch } from "react";
 
 export const handleToggleInclusion = (
   key: string,
