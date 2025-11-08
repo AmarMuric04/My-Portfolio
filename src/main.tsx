@@ -1,4 +1,5 @@
 import { RouterProvider, createRouter } from "@tanstack/react-router";
+import NiceModal from "@ebay/nice-modal-react";
 import ReactDOM from "react-dom/client";
 import { StrictMode } from "react";
 
@@ -17,7 +18,9 @@ if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <StrictMode>
-      <RouterProvider router={router} />
+      <NiceModal.Provider>
+        <RouterProvider router={router} />
+      </NiceModal.Provider>
     </StrictMode>
   );
 }

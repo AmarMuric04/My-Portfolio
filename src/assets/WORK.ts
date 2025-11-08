@@ -243,6 +243,7 @@ This project features an extensive array of functionalities and I’m incredibly
     type: "Learning Platform",
     status: "Archived",
     title: "Learnify",
+    website: null,
   },
   {
     myThoughts:
