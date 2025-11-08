@@ -1,43 +1,52 @@
 import { TECH_ICONS } from "@/assets";
 
-const ProjectTech = ({ techs }) => {
-  return (
-    <section className="flex flex-wrap gap-[1%] my-4">
-      {Object.entries(techs).map(
-        ([category, techList]: [string, Array<string>]) => {
-          if (techList.length === 0) return null;
+interface ProjectTechProps {
+  techs: {
+    [category: string]: string[];
+  };
+}
 
-          return (
-            <div
-              className="flex-grow lg:flex-none p-2 rounded-xl w-[24.2%] min-w-[125px] min-h-[150px] transition-all"
-              key={category}
-            >
-              <p className="mb-2 text-sm uppercase">{category}</p>
-              <div className="flex flex-wrap items-center gap-4 max-w-full overflow-hidden">
-                {techList.map((tech: string) => {
-                  const Icon = TECH_ICONS[tech];
-                  return (
-                    <div
-                      className="flex flex-shrink-0 items-center gap-2 max-w-full overflow-hidden text-sm"
-                      key={tech}
-                    >
-                      {Icon ? (
-                        <Icon className="flex-shrink-0 w-6 h-6" />
-                      ) : (
-                        <span className="flex-shrink-0 w-6 h-6" />
-                      )}
-                      <span className="max-w-full overflow-hidden truncate text-ellipsis whitespace-nowrap">
-                        {tech}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
+const ProjectTech = ({ techs }: ProjectTechProps) => {
+  const categoryLabels: { [key: string]: string } = {
+    frontend: "Frontend",
+    database: "Database",
+    backend: "Backend",
+    other: "Other",
+  };
+
+  return (
+    <div className="space-y-3 py-2">
+      {Object.entries(techs).map(([category, techList]: [string, string[]]) => {
+        if (techList.length === 0) return null;
+
+        return (
+          <div className="flex flex-col gap-2" key={category}>
+            <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+              {categoryLabels[category] || category}
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {techList.map((tech: string) => {
+                const Icon = TECH_ICONS[tech as keyof typeof TECH_ICONS];
+                return (
+                  <div
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border bg-card hover:bg-accent/50 transition-colors group"
+                    title={tech}
+                    key={tech}
+                  >
+                    {Icon && (
+                      <div className="w-3.5 h-3.5 flex items-center justify-center flex-shrink-0">
+                        <Icon />
+                      </div>
+                    )}
+                    <span className="text-xs font-medium">{tech}</span>
+                  </div>
+                );
+              })}
             </div>
-          );
-        }
-      )}
-    </section>
+          </div>
+        );
+      })}
+    </div>
   );
 };
 

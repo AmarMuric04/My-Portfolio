@@ -1,7 +1,8 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { ChevronDown } from "lucide-react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 import React from "react";
 
+import { TooltipContent, TooltipTrigger, Tooltip } from "../ui/tooltip";
 import { Button } from "../ui/button";
 
 interface HighlightsProps {
@@ -12,7 +13,7 @@ interface HighlightsProps {
   title: string;
 }
 
-const Highlights: React.FC<HighlightsProps> = ({
+export const Highlights: React.FC<HighlightsProps> = ({
   handleClick,
   setSection,
   section,
@@ -20,50 +21,19 @@ const Highlights: React.FC<HighlightsProps> = ({
   title,
 }) => {
   return (
-    <section aria-labelledby="highlights-heading" className="mt-4">
+    <section aria-labelledby="highlights-heading">
       <h2 id="highlights-heading" className="sr-only">
         {title} Highlights
       </h2>
-      <div className="flex justify-between items-center">
-        <ul className="flex items-center gap-1 my-4 text-xs" role="list">
-          {images.map((image, index) => {
-            const isSelected = index === section;
-            return (
-              <button
-                className="relative p-1.25 rounded-full cursor-pointer"
-                aria-label={`Select ${image.description}`}
-                onClick={() => setSection(index)}
-                key={image.image + "dot"}
-                aria-pressed={isSelected}
-              >
-                {isSelected && (
-                  <span className="z-50 relative">{image.description}</span>
-                )}
-              </button>
-            );
-          })}
-        </ul>
 
-        <div className="flex gap-1">
-          <Button onClick={() => handleClick("prev")} aria-label="Previous">
-            <div className="rotate-90">
-              <ChevronDown />
-            </div>
-          </Button>
-          <Button onClick={() => handleClick("next")} aria-label="Next">
-            <div className="-rotate-90">
-              <ChevronDown />
-            </div>
-          </Button>
-        </div>
-      </div>
+      {/* Image Display */}
       {images.map((image, index) => {
         if (index === section) {
           return (
             <picture key={image.image + "image"}>
               <source srcSet={image.image} type="image/webp" />
               <LazyLoadImage
-                className="rounded-lg lg:min-h-[21rem] showAnimation"
+                className="rounded-lg w-full object-cover shadow-md mb-3 animate-in fade-in duration-300"
                 key={image.image + "image"}
                 alt={image.description}
                 src={image.image}
@@ -75,8 +45,74 @@ const Highlights: React.FC<HighlightsProps> = ({
         }
         return null;
       })}
+
+      {/* Controls */}
+      <div className="flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          {images.map((image, index) => {
+            const isSelected = index === section;
+            return (
+              <Tooltip key={image.image + "dot"}>
+                <TooltipTrigger asChild>
+                  <button
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      isSelected
+                        ? "w-8 bg-primary"
+                        : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                    }`}
+                    aria-label={`Go to image ${index + 1}: ${image.description}`}
+                    onClick={() => setSection(index)}
+                    aria-pressed={isSelected}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{image.description}</p>
+                </TooltipContent>
+              </Tooltip>
+            );
+          })}
+        </div>
+
+        <div className="flex items-center gap-1">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                onClick={() => handleClick("prev")}
+                aria-label="Previous image"
+                className="h-8 w-8 p-0"
+                variant="ghost"
+                size="sm"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Previous</p>
+            </TooltipContent>
+          </Tooltip>
+
+          <span className="text-xs text-muted-foreground mx-1">
+            {section + 1} / {images.length}
+          </span>
+
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                onClick={() => handleClick("next")}
+                aria-label="Next image"
+                className="h-8 w-8 p-0"
+                variant="ghost"
+                size="sm"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Next</p>
+            </TooltipContent>
+          </Tooltip>
+        </div>
+      </div>
     </section>
   );
 };
-
-export default Highlights;
