@@ -1,7 +1,6 @@
 import React, { ReactNode, useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
-
-import { UnhideTextSVG } from "@/svgs";
+import { Code } from "lucide-react";
 
 export const UnhideButton: React.FC<{ children: ReactNode }> = React.memo(
   ({ children }) => {
@@ -26,7 +25,7 @@ export const UnhideButton: React.FC<{ children: ReactNode }> = React.memo(
           onClick={() => setRevealed(true)}
         >
           <span className="inline-flex items-center px-1 theme-border-background rounded-md transition-all theme-surface-hover">
-            <UnhideTextSVG />
+            <Code />
           </span>
         </span>
       );

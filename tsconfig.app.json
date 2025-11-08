@@ -29,6 +29,9 @@
       ],
       "@/svgs": [
         "./src/assets/svgs.tsx"
+      ],
+      "@/shadcn/*": [
+        "./src/components/ui/*"
       ]
     }
   },

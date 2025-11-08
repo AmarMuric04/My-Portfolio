@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 
-import SmallProjectList from "../project/SmallProjectList";
-import ProjectList from "../project/ProjectList";
+import { Project } from "@/components/project";
+import { WORK } from "@/assets/WORK";
 
 export const WorkPage = () => {
   return (
@@ -35,12 +35,18 @@ export const WorkPage = () => {
         problems I’ve encountered. Here’s a glimpse at some of what I’ve worked
         on.
       </p>
-      <ProjectList />
+
+      <ul className="flex flex-col gap-2">
+        {WORK.map((project) => (
+          <Project project={project} />
+        ))}
+      </ul>
+
       <p className="my-4 text-lg">
         Here are a few more projects I’ve tackled. For the full collection, feel
         free to check out my{" "}
         <a
-          className="font-semibold hover:text-[#697565] underline transition-all cursor-pointer"
+          className="font-semibold underline transition-all cursor-pointer"
           href="https://github.com/AmarMuric04"
           target="_blank"
         >
@@ -48,7 +54,12 @@ export const WorkPage = () => {
         </a>
         .
       </p>
-      <SmallProjectList />
+
+      <ul className="flex flex-col gap-2">
+        {WORK.map((project) => (
+          <SmallProject project={project} />
+        ))}
+      </ul>
     </>
   );
 };

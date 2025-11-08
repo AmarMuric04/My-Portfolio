@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet";
+import { Mail } from "lucide-react";
 
 import { UnhideButton } from "@/components/atoms";
-
-import { LinkedInSVG, GithubSVG, MailSVG } from "../../../assets/svgs";
+import { LinkedInSVG, GithubSVG } from "@/svgs";
 
 import Myself from "/myself.webp";
 
@@ -165,7 +165,7 @@ export const HomePage = () => {
           className="flex items-center gap-3 text-lg transition-all cursor-pointer"
           href="mailto:muricamar2004@gmail.com"
         >
-          <MailSVG />
+          <Mail />
           <p>Email</p>
         </a>
       </section>

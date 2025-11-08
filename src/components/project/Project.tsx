@@ -1,32 +1,28 @@
+import { ExternalLink, ChevronDown, WholeWord, Plus } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
-import {
-  MiniArrowDownSVG,
-  GithubSVG,
-  WorldSVG,
-  PlusSVG,
-} from "../../assets/svgs";
-import useIntersectionObserver from "../../hooks/useIntersectionObserver";
-import ExternalLinkButton from "../buttons/ExternalLinkButton";
-import { projectImages } from "../../assets/WORK_HIGHLIGHTS";
-import { projectREADMEs } from "../../assets/WORK_READMES";
-import ActionButton from "../buttons/ActionButton";
-import { ProjectType } from "../../types/project";
+import { WORK_HIGHLIGHTS } from "@/assets/WORK_HIGHLIGHTS";
+import { WORK_READMES } from "@/assets/WORK_READMES";
+import { useIntersectionObserver } from "@/hooks";
+import { Modal } from "@/components/organisms";
+import { GithubSVG } from "@/assets/svgs";
+import { Button } from "@/shadcn/button";
+import { cn } from "@/lib/utils";
+
 import MyThoughtsModal from "./MyThoughtsModal";
-import { ModalType } from "../../types/modal";
 import ProjectStatus from "./ProjectStatus";
 import ProjectTech from "./ProjectTech";
 import Highlights from "./Highlights";
 import MoreModal from "./MoreModal";
-import Modal from "../modal/Modal";
-import { cx } from "../../utility";
 
-interface ProjectProps {
-  project: ProjectType;
+enum ModalType {
+  MY_THOUGHTS = "my-thoughts",
+  README = "readme",
+  MORE = "more",
 }
 
-const Project: React.FC<ProjectProps> = ({ project }) => {
+export const Project: React.FC<{ project: IProject }> = ({ project }) => {
   const [hideHighlights, setHideHighlights] = useState<boolean>(true);
   const [isContentExpanded, setIsContentExpanded] = useState<boolean>(false);
   const [isShowingFeatures, setIsShowingFeatures] = useState<boolean>(false);
@@ -34,7 +30,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
   const [openedModal, setOpenedModal] = useState<Array<ModalType>>([]);
   const { isIntersecting, targetRef } = useIntersectionObserver();
   const [section, setSection] = useState<number>(0);
-  const images = projectImages[project.title.toLowerCase()];
+  const images = WORK_HIGHLIGHTS[project.title.toLowerCase()];
 
   useEffect(() => {
     if (isIntersecting && !wasInView) {
@@ -53,7 +49,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
       case ModalType.MY_THOUGHTS:
         return <MyThoughtsModal project={project} />;
       case ModalType.README:
-        return <ReactMarkdown>{projectREADMEs[project.title]}</ReactMarkdown>;
+        return <ReactMarkdown>{WORK_READMES[project.title]}</ReactMarkdown>;
       case ModalType.MORE:
         return (
           <MoreModal
@@ -133,7 +129,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
 
         <div className="relative flex flex-col items-start sm:max-w-4/5">
           <div
-            className={cx("transition-all pr-12", {
+            className={cn("transition-all pr-12", {
               "line-clamp-3": !isContentExpanded,
             })}
           >
@@ -151,7 +147,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
 
         <div className="flex sm:flex-row flex-col-reverse justify-between items-center gap-2 sm:gap-0 mt-1 w-full text-sm">
           <div className="flex gap-1 w-full">
-            <ActionButton
+            <Button
               onClick={() => setIsShowingFeatures(!isShowingFeatures)}
               className="py-1 w-1/2 sm:w-[8rem]"
             >
@@ -160,19 +156,19 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
                   isShowingFeatures && "rotate-180"
                 }`}
               >
-                <MiniArrowDownSVG />
+                <ChevronDown />
               </div>
               <p>Features</p>
-            </ActionButton>
-            <ActionButton
+            </Button>
+            <Button
               onClick={() => toggleModal(ModalType.MORE)}
               className="py-1 w-1/2 sm:w-[8rem]"
             >
               <div className="transition-all">
-                <PlusSVG />
+                <Plus />
               </div>
               <p>More</p>
-            </ActionButton>
+            </Button>
           </div>
           <p
             className="flex-shrink-0 text-xs select-none"
@@ -198,7 +194,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
         <div className="flex flex-wrap justify-between items-center gap-2 sm:gap-0 mt-1 w-full text-sm">
           <div className="flex gap-1 w-full sm:w-auto">
             {images?.length && (
-              <ActionButton
+              <Button
                 onClick={() => setHideHighlights(!hideHighlights)}
                 className="py-1 w-1/2 sm:w-[8rem]"
               >
@@ -207,31 +203,35 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
                     !hideHighlights && "rotate-180"
                   }`}
                 >
-                  <MiniArrowDownSVG />
+                  <ChevronDown />
                 </div>
                 <p>Highlights</p>
-              </ActionButton>
+              </Button>
             )}
-            <ActionButton
+            <Button
               onClick={() => toggleModal(ModalType.MY_THOUGHTS)}
               className="py-1 w-1/2 sm:w-[8rem]"
             >
               <div className="transition-all">
-                <PlusSVG />
+                <Plus />
               </div>
               <p>My Thoughts</p>
-            </ActionButton>
+            </Button>
           </div>
           <div className="flex flex-shrink-0 justify-center sm:justify-start items-center gap-4 w-full sm:w-auto">
             {project.website && (
-              <ExternalLinkButton href={project.website} icon={WorldSVG}>
-                Visit Website
-              </ExternalLinkButton>
+              <Button asChild>
+                <WholeWord />
+                <a href={project.website}>Visit Website</a>
+                <ExternalLink />
+              </Button>
             )}
             {project.github && (
-              <ExternalLinkButton href={project.github} icon={GithubSVG}>
-                Visit Github
-              </ExternalLinkButton>
+              <Button asChild>
+                <GithubSVG />
+                <a href={project.github}>Visit Website</a>
+                <ExternalLink />
+              </Button>
             )}
           </div>
         </div>
@@ -246,15 +246,13 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
           />
         )}
 
-        <ActionButton
+        <Button
           onClick={() => toggleModal(ModalType.README)}
           className="float-right mt-4"
         >
           README.md
-        </ActionButton>
+        </Button>
       </article>
     </li>
   );
 };
-
-export default Project;

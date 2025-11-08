@@ -1,8 +1,5 @@
 import React from "react";
 
-import { DevelopmentSVG, ArchiveSVG, LiveSVG } from "../../assets/svgs";
-import StatusButton from "../buttons/StatusButton";
-
 interface ProjectStatusProps {
   status: string;
 }

@@ -1,14 +1,13 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { ChevronDown } from "lucide-react";
 import React from "react";
 
-import { MiniArrowDownSVG } from "../../assets/svgs";
-import ActionButton from "../buttons/ActionButton";
-import { ImageType } from "../../types/image";
+import { Button } from "@/shadcn/button";
 
 interface HighlightsProps {
   handleClick: (direction: "prev" | "next") => void;
   setSection: (index: number) => void;
-  images: Array<ImageType>;
+  images: Array<IImage>;
   section: number;
   title: string;
 }
@@ -46,19 +45,16 @@ const Highlights: React.FC<HighlightsProps> = ({
         </ul>
 
         <div className="flex gap-1">
-          <ActionButton
-            onClick={() => handleClick("prev")}
-            aria-label="Previous"
-          >
+          <Button onClick={() => handleClick("prev")} aria-label="Previous">
             <div className="rotate-90">
-              <MiniArrowDownSVG />
+              <ChevronDown />
             </div>
-          </ActionButton>
-          <ActionButton onClick={() => handleClick("next")} aria-label="Next">
+          </Button>
+          <Button onClick={() => handleClick("next")} aria-label="Next">
             <div className="-rotate-90">
-              <MiniArrowDownSVG />
+              <ChevronDown />
             </div>
-          </ActionButton>
+          </Button>
         </div>
       </div>
       {images.map((image, index) => {

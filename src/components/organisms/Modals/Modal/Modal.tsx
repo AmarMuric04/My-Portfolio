@@ -11,7 +11,7 @@ interface ModalProps {
   id: string;
 }
 
-const Modal: React.FC<ModalProps> = ({
+export const Modal: React.FC<ModalProps> = ({
   setIsOpen,
   children,
   title,
@@ -83,5 +83,3 @@ const Modal: React.FC<ModalProps> = ({
     </AnimatePresence>
   );
 };
-
-export default Modal;

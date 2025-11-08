@@ -1,5 +1,5 @@
 import { PageSection } from "@/components/molecules";
-import { education } from "@/assets/EDUCATION";
+import { EDUCATION } from "@/assets/education";
 
 import { EducationCard, PageHeader, Helmet } from "./components";
 
@@ -14,7 +14,7 @@ export const EducationPage = () => {
 
       <PageSection>
         <ul>
-          {education.map((education) => (
+          {EDUCATION.map((education) => (
             <EducationCard {...education} />
           ))}
         </ul>
