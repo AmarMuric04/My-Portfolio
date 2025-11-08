@@ -1,13 +1,6 @@
-import React from "react";
+import { TECH_ICONS } from "@/assets";
 
-import { techSVGS } from "../../assets/projectTechs";
-import { TechsType } from "../../types/tech";
-
-interface ProjectTechProps {
-  techs: TechsType;
-}
-
-const ProjectTech: React.FC<ProjectTechProps> = React.memo(({ techs }) => {
+const ProjectTech = ({ techs }) => {
   return (
     <section className="flex flex-wrap gap-[1%] my-4">
       {Object.entries(techs).map(
@@ -19,12 +12,10 @@ const ProjectTech: React.FC<ProjectTechProps> = React.memo(({ techs }) => {
               className="flex-grow lg:flex-none p-2 rounded-xl w-[24.2%] min-w-[125px] min-h-[150px] transition-all"
               key={category}
             >
-              <p className="mb-2 text-sm uppercase">
-                {category}
-              </p>
+              <p className="mb-2 text-sm uppercase">{category}</p>
               <div className="flex flex-wrap items-center gap-4 max-w-full overflow-hidden">
                 {techList.map((tech: string) => {
-                  const Icon = techSVGS[tech];
+                  const Icon = TECH_ICONS[tech];
                   return (
                     <div
                       className="flex flex-shrink-0 items-center gap-2 max-w-full overflow-hidden text-sm"
@@ -48,6 +39,6 @@ const ProjectTech: React.FC<ProjectTechProps> = React.memo(({ techs }) => {
       )}
     </section>
   );
-});
+};
 
 export default ProjectTech;

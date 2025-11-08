@@ -1,28 +1,21 @@
 import { ExternalLink, ChevronDown, WholeWord, Plus } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
 import { WORK_HIGHLIGHTS } from "@/assets/WORK_HIGHLIGHTS";
 import { WORK_READMES } from "@/assets/WORK_READMES";
 import { useIntersectionObserver } from "@/hooks";
 import { Modal } from "@/components/organisms";
-import { GithubSVG } from "@/assets/svgs";
-import { Button } from "@/shadcn/button";
+import { GithubSVG } from "@/assets";
 import { cn } from "@/lib/utils";
 
 import MyThoughtsModal from "./MyThoughtsModal";
-import ProjectStatus from "./ProjectStatus";
 import ProjectTech from "./ProjectTech";
 import Highlights from "./Highlights";
+import { Button } from "../ui/button";
 import MoreModal from "./MoreModal";
 
-enum ModalType {
-  MY_THOUGHTS = "my-thoughts",
-  README = "readme",
-  MORE = "more",
-}
-
-export const Project: React.FC<{ project: IProject }> = ({ project }) => {
+export const Project = ({ project }) => {
   const [hideHighlights, setHideHighlights] = useState<boolean>(true);
   const [isContentExpanded, setIsContentExpanded] = useState<boolean>(false);
   const [isShowingFeatures, setIsShowingFeatures] = useState<boolean>(false);
@@ -125,7 +118,7 @@ export const Project: React.FC<{ project: IProject }> = ({ project }) => {
           )}
         </div>
 
-        <ProjectStatus status={project.status} />
+        {project.status}
 
         <div className="relative flex flex-col items-start sm:max-w-4/5">
           <div
@@ -198,14 +191,16 @@ export const Project: React.FC<{ project: IProject }> = ({ project }) => {
                 onClick={() => setHideHighlights(!hideHighlights)}
                 className="py-1 w-1/2 sm:w-[8rem]"
               >
-                <div
-                  className={`transition-all ${
-                    !hideHighlights && "rotate-180"
-                  }`}
-                >
-                  <ChevronDown />
+                <div>
+                  <div
+                    className={`transition-all ${
+                      !hideHighlights && "rotate-180"
+                    }`}
+                  >
+                    <ChevronDown />
+                  </div>
+                  <p>Highlights</p>
                 </div>
-                <p>Highlights</p>
               </Button>
             )}
             <Button
@@ -221,16 +216,20 @@ export const Project: React.FC<{ project: IProject }> = ({ project }) => {
           <div className="flex flex-shrink-0 justify-center sm:justify-start items-center gap-4 w-full sm:w-auto">
             {project.website && (
               <Button asChild>
-                <WholeWord />
-                <a href={project.website}>Visit Website</a>
-                <ExternalLink />
+                <div>
+                  <WholeWord />
+                  <a href={project.website}>Visit Website</a>
+                  <ExternalLink />
+                </div>
               </Button>
             )}
             {project.github && (
               <Button asChild>
-                <GithubSVG />
-                <a href={project.github}>Visit Website</a>
-                <ExternalLink />
+                <div>
+                  <GithubSVG />
+                  <a href={project.github}>Visit Website</a>
+                  <ExternalLink />
+                </div>
               </Button>
             )}
           </div>

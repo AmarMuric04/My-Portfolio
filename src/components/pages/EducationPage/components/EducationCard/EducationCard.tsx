@@ -1,5 +1,3 @@
-import React from "react";
-
 import {
   CardContent,
   CardHeader,
@@ -12,7 +10,7 @@ import { ProgressBar } from "@/components/atoms";
 
 import { ProgressLabel } from "../ProgressLabel";
 
-export const EducationCard: React.FC<IEducation> = ({
+export const EducationCard = ({
   progression,
   institution,
   teacher,
@@ -34,7 +32,7 @@ export const EducationCard: React.FC<IEducation> = ({
 
   return (
     <li
-      className="relative shadow-md backdrop-blur-sm my-4 p-3 borderrounded-lg overflow-hidden transition-all"
+      className="relative shadow-md backdrop-blur-sm my-4 p-3 border rounded-lg overflow-hidden transition-all"
       ref={targetRef}
     >
       <Card>

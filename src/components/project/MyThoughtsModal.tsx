@@ -1,12 +1,4 @@
-import React from "react";
-
-import { ProjectType } from "../../types/project";
-
-interface MyThoughtsModalType {
-  project: ProjectType;
-}
-
-const MyThoughtsModal: React.FC<MyThoughtsModalType> = ({ project }) => {
+const MyThoughtsModal = ({ project }) => {
   return (
     <div className="flex lg:flex-row flex-col-reverse items-start w-full">
       <div>

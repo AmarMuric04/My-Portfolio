@@ -65,7 +65,7 @@ export const Header: React.FC = () => {
       <header className="mb-28" ref={targetRef}>
         <nav
           className={cn(
-            "border shadow-mdselect-none h-[3.5rem] top-4 transition-all rounded-full fixed z-50 left-1/2 -translate-x-1/2 pr-4 overflow-hidden",
+            "border shadow-md select-none h-[3.5rem] top-4 transition-all rounded-full fixed z-50 left-1/2 -translate-x-1/2 pr-4 overflow-hidden",
             {
               "md:w-[38rem] w-[80%]": !isIntersecting,
               "md:w-[45rem] w-[95%]": isIntersecting,
@@ -81,9 +81,9 @@ export const Header: React.FC = () => {
                 <p className="hidden sm:flex">Home</p>
               </NavBarItem>
 
-              <NavBarItem to="/projects">
+              <NavBarItem to="/work">
                 <Folder />
-                <p className="hidden sm:flex">Projects</p>
+                <p className="hidden sm:flex">Work</p>
               </NavBarItem>
 
               <NavBarItem to="/education">
@@ -109,7 +109,9 @@ export const Header: React.FC = () => {
           </div>
         </nav>
       </header>
+
       <ToggleThemeButton className="sm:hidden bottom-5 left-5 z-50 fixed flex justify-center items-center w-[4rem] h-[4rem] transition-all" />
+
       <a
         className={cn(
           "sm:hidden fixed z-50 bottom-5 transition-all right-5 flex items-center justify-center h-[3rem] rounded-full gap-2 shadow-xl",

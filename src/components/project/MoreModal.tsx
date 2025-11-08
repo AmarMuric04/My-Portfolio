@@ -1,17 +1,16 @@
 import { SetStateAction, Dispatch } from "react";
+import { WholeWord } from "lucide-react";
 import React from "react";
 
-import { GithubSVG, WorldSVG } from "../../assets/svgs";
-import ActionButton from "../buttons/ActionButton";
-import { ProjectType } from "../../types/project";
-import { ModalType } from "../../types/modal";
-import ProjectStatus from "./ProjectStatus";
+import { GithubSVG } from "@/assets/svgs";
+
 import ProjectTech from "./ProjectTech";
+import { Button } from "../ui/button";
 
 interface MoreModalProps {
-  setOpenedModal: Dispatch<SetStateAction<Array<ModalType>>>;
-  openedModal: Array<ModalType>;
-  project: ProjectType;
+  setOpenedModal: Dispatch<SetStateAction<Array<any>>>;
+  openedModal: Array<any>;
+  project: any;
 }
 
 const MoreModal: React.FC<MoreModalProps> = ({
@@ -26,7 +25,7 @@ const MoreModal: React.FC<MoreModalProps> = ({
       <section className="flex flex-wrap justify-between items-center gap-4">
         <h1 className="font-semibold text-lg">{project.title}</h1>
         <div className="flex gap-4">
-          <ProjectStatus status={project.status} />
+          {project.status}
           {project.github && (
             <a href={project.github} target="_blank">
               <GithubSVG />
@@ -34,7 +33,7 @@ const MoreModal: React.FC<MoreModalProps> = ({
           )}
           {project.website && (
             <a href={project.website} target="_blank">
-              <WorldSVG />
+              <WholeWord />
             </a>
           )}
         </div>
@@ -46,14 +45,12 @@ const MoreModal: React.FC<MoreModalProps> = ({
           {project.content}
           {'"'}
         </em>
-        <ActionButton
-          onClick={() =>
-            setOpenedModal([...openedModal, ModalType.MY_THOUGHTS])
-          }
+        <Button
+          onClick={() => setOpenedModal([...openedModal, "a"])}
           className="my-4 px-3"
         >
           My thoughts on this project
-        </ActionButton>
+        </Button>
         <strong>Duration</strong>
         <p className="mb-4">{project.duration}</p>
         <strong>Challenge I overcame during this project</strong>

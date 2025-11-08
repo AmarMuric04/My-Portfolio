@@ -2,12 +2,12 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { ChevronDown } from "lucide-react";
 import React from "react";
 
-import { Button } from "@/shadcn/button";
+import { Button } from "../ui/button";
 
 interface HighlightsProps {
   handleClick: (direction: "prev" | "next") => void;
   setSection: (index: number) => void;
-  images: Array<IImage>;
+  images: Array<any>;
   section: number;
   title: string;
 }

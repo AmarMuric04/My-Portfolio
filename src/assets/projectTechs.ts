@@ -33,7 +33,7 @@ import {
   AISVG,
 } from "./svgs";
 
-export const TECH_ICONS: ITech = {
+export const TECH_ICONS = {
   "Algorithm Visualizer": AlgorithmSVG,
   "Framer Motion": FramerMotionSVG,
   "Local Storage": LocalStorageSVG,

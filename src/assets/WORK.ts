@@ -1,4 +1,4 @@
-export const WORK: Array<IProject> = [
+export const WORK = [
   {
     myThoughts: `ModernShop reflects my goal to simplify the process of launching an online store. Built as a customizable e-commerce template using Next.js and modern tooling, it enables developers or entrepreneurs to plug in their backend and database with minimal configuration. This project reinforced my focus on scalability, modular design, and ease of developer adoption.`,
     content:
@@ -445,9 +445,9 @@ What makes this project so special to me is not just the functionality, but how 
     title: "Newsly",
     status: "Live",
   },
-];
+] as const;
 
-export const OTHER_WORK: Array<ISmallProject> = [
+export const OTHER_WORK = [
   {
     github:
       "https://github.com/AmarMuric04/electron-react-bootstrap-zustand-express-boilerplate",
@@ -540,4 +540,4 @@ export const OTHER_WORK: Array<ISmallProject> = [
     github: "https://github.com/AmarMuric04/Amazon-Clone",
     title: "Amazon Clone",
   },
-];
+] as const;

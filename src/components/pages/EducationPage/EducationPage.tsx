@@ -1,5 +1,5 @@
 import { PageSection } from "@/components/molecules";
-import { EDUCATION } from "@/assets/education";
+import { EDUCATION } from "@/assets";
 
 import { EducationCard, PageHeader, Helmet } from "./components";
 
