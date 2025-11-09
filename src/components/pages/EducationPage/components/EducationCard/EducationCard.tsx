@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/card";
 import { useIntersectionObserver, useAnimatedNumber } from "@/hooks";
 import { ProgressBar } from "@/components/atoms";
+import { Badge } from "@/components/ui/badge";
 
 import { ProgressLabel } from "../ProgressLabel";
 
@@ -25,27 +26,35 @@ export const EducationCard = ({
 
   const currentProgression = useAnimatedNumber(
     wasInView ? progression : 0,
-    600
+    1200
   );
 
   const takeAway = progression > 90 ? 7 : 2;
 
+  const getStatus = () => {
+    if (progression === 100) return "Completed";
+    if (progression >= 50) return "In Progress";
+    return "Started";
+  };
+
+  const getStatusVariant = (): "secondary" | "default" | "outline" => {
+    if (progression === 100) return "default";
+    if (progression >= 50) return "secondary";
+    return "outline";
+  };
+
   return (
-    <li
-      className="relative shadow-md backdrop-blur-sm my-4 p-3 border rounded-lg overflow-hidden transition-all"
-      ref={targetRef}
-    >
+    <li ref={targetRef}>
       <Card>
         <CardHeader>
-          <CardTitle>
-            <h1 className="py-2 font-semibold text-lg transition-all">
-              {name}
-            </h1>
-          </CardTitle>
+          <div className="flex flex-wrap items-center gap-2">
+            <CardTitle className="text-xl">{name}</CardTitle>
+            <Badge variant="secondary">{type}</Badge>
+            <Badge variant={getStatusVariant()}>{getStatus()}</Badge>
+          </div>
         </CardHeader>
 
         <CardContent>
-          <p>{type}</p>
           <em className="block">
             at {institution} {teacher !== "N/A" && "by " + teacher}
           </em>
@@ -58,12 +67,16 @@ export const EducationCard = ({
         </CardContent>
 
         <CardFooter>
-          <p className="my-4 font-semibold italic">Acquired Skills</p>
-          <ul>
-            {skills.map((skill) => (
-              <li key={skill}>{skill}</li>
-            ))}
-          </ul>
+          <div className="space-y-3 w-full">
+            <p className="font-semibold italic">Acquired Skills</p>
+            <div className="flex flex-wrap gap-2">
+              {skills.map((skill) => (
+                <Badge variant="outline" key={skill}>
+                  {skill}
+                </Badge>
+              ))}
+            </div>
+          </div>
         </CardFooter>
       </Card>
     </li>

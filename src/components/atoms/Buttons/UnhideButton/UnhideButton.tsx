@@ -2,6 +2,8 @@ import React, { ReactNode, useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Code } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
+
 export const UnhideButton: React.FC<{ children: ReactNode }> = React.memo(
   ({ children }) => {
     const [revealed, setRevealed] = useState(false);
@@ -20,14 +22,14 @@ export const UnhideButton: React.FC<{ children: ReactNode }> = React.memo(
 
     if (!revealed) {
       return (
-        <span
-          className="inline mx-1 cursor-pointer"
+        <Button
+          className="inline-flex mx-1.5 top-0.5 relative cursor-pointer py-1 h-fit"
           onClick={() => setRevealed(true)}
+          variant="outline"
+          size="icon"
         >
-          <span className="inline-flex items-center px-1 theme-border-background rounded-md transition-all theme-surface-hover">
-            <Code />
-          </span>
-        </span>
+          <Code />
+        </Button>
       );
     }
 

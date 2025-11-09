@@ -36,7 +36,7 @@ const ResponsiveModal: React.FC<{
       <DialogContent className={classNameDialog}>
         {/* To prevent accessibility errors by Radix */}
         <DialogTitle className="sr-only">Dialog Title</DialogTitle>
-        <div className="max-h-[80vh] h-120 overflow-auto">{children}</div>
+        <div className="max-h-[80vh] h-150 overflow-auto">{children}</div>
       </DialogContent>
     </Dialog>
   );

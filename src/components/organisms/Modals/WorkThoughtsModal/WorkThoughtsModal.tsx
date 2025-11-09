@@ -13,22 +13,38 @@ export const WorkThoughtsModal = NiceModal.create(
       modal.hide();
     };
 
+    const projectLogo =
+      "/" + project.title.replace(" ", "").toLowerCase() + "-logo.png";
+
     return (
       <ResponsiveModal
-        classNameDialog="space-y-3 overflow-hidden pb-0"
-        classNameDrawer="space-y-3 overflow-hidden pb-0"
+        classNameDrawer="max-h-[85vh]"
+        classNameDialog="sm:max-w-3xl"
         onClose={handleResolveModal}
         open={modal.visible}
       >
-        <div className="flex lg:flex-row flex-col-reverse items-start w-full">
-          <div>
-            <h1 className="mb-4 font-semibold text-lg">{project.title}</h1>
-            <p className="xl:max-w-[80%]">{project.myThoughts}</p>
+        <div className="space-y-6">
+          {/* Header with logo */}
+          <div className="flex items-start gap-6">
+            <div className="flex-1">
+              <h1 className="font-bold text-2xl mb-2">{project.title}</h1>
+              <p className="text-sm text-muted-foreground">
+                My Personal Reflections
+              </p>
+            </div>
+            {projectLogo && (
+              <img
+                className="opacity-30 w-20 h-20 object-contain"
+                alt={`${project.title} logo`}
+                src={projectLogo}
+              />
+            )}
           </div>
-          <img
-            src={`/${project.title.toLowerCase().replace(" ", "")}-logo.png`}
-            className="opacity-50 mb-8 w-[10rem] object-contain"
-          />
+
+          {/* Thoughts content */}
+          <div className="prose prose-sm max-w-none">
+            <p className="text-base leading-relaxed">{project.myThoughts}</p>
+          </div>
         </div>
       </ResponsiveModal>
     );

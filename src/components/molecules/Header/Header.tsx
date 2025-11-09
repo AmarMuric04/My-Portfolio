@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 import { ToggleThemeButton } from "@/components/atoms";
 import { useIntersectionObserver } from "@/hooks";
+import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 const NavBarItem: React.FC<React.PropsWithChildren<{ to: string }>> = ({
@@ -21,8 +22,19 @@ const NavBarItem: React.FC<React.PropsWithChildren<{ to: string }>> = ({
       initial={false}
     >
       <Link
+        className={cn(
+          "flex items-center gap-2 transition-all duration-300",
+          isSelected &&
+            "text-primary [&>svg]:text-primary [&>svg]:drop-shadow-[0_0_8px_oklch(0.648_0.2_131.684/0.5)]"
+        )}
+        style={
+          isSelected
+            ? {
+                textShadow: `0 0 5px oklch(0.648 0.2 131.684 / 0.5), 0 0 10px oklch(0.648 0.2 131.684 / 0.3)`,
+              }
+            : undefined
+        }
         aria-label={`Go to the ${to} page to learn more about me`}
-        className="flex items-center gap-2"
         to={to}
       >
         {children}
@@ -30,8 +42,8 @@ const NavBarItem: React.FC<React.PropsWithChildren<{ to: string }>> = ({
 
       {isSelected && (
         <motion.div
+          className="bottom-0 left-0 absolute w-full h-0.5 bg-primary shadow-[0_0_8px_oklch(0.648_0.2_131.684)]"
           transition={{ type: "spring", duration: 0.6, bounce: 0.2 }}
-          className="bottom-0 left-0 absolute w-full h-0.5"
           layoutId="underline"
         />
       )}
@@ -63,9 +75,9 @@ export const Header: React.FC = () => {
   return (
     <>
       <header className="mb-28" ref={targetRef}>
-        <nav
+        <Card
           className={cn(
-            "border shadow-md select-none h-[3.5rem] top-4 transition-all rounded-full fixed z-50 left-1/2 -translate-x-1/2 pr-4 overflow-hidden",
+            "border py-0 h-16 shadow-md transition-[width] select-none top-4 rounded-full fixed z-50 left-1/2 -translate-x-1/2 pr-4 overflow-hidden",
             {
               "md:w-[38rem] w-[80%]": !isIntersecting,
               "md:w-[45rem] w-[95%]": isIntersecting,
@@ -73,7 +85,7 @@ export const Header: React.FC = () => {
           )}
         >
           <div className="flex justify-between items-center w-full h-full">
-            <ul className="flex gap-4 rounded-full w-full sm:w-auto h-full transition-all duration-300">
+            <ul className="flex gap-4 rounded-full w-full sm:w-auto h-full">
               <ToggleThemeButton />
 
               <NavBarItem to="/">
@@ -107,15 +119,16 @@ export const Header: React.FC = () => {
               </a>
             </button>
           </div>
-        </nav>
+        </Card>
       </header>
 
-      <ToggleThemeButton className="sm:hidden bottom-5 left-5 z-50 fixed flex justify-center items-center w-[4rem] h-[4rem] transition-all" />
-
+      <div className="sm:hidden bottom-5 left-5 z-50 fixed flex justify-center items-center size-16">
+        <ToggleThemeButton />
+      </div>
       <a
         className={cn(
-          "sm:hidden fixed z-50 bottom-5 transition-all right-5 flex items-center justify-center h-[3rem] rounded-full gap-2 shadow-xl",
-          { "w-[6rem] rounded-br-none": !isVisible, "w-[3rem]": isVisible }
+          "sm:hidden fixed z-50 bottom-5 right-5 flex items-center justify-center h-12 rounded-full gap-2 shadow-xl",
+          { "w-24 rounded-br-none": !isVisible, "w-12": isVisible }
         )}
         href="mailto:muricamar2004@gmail.com"
       >

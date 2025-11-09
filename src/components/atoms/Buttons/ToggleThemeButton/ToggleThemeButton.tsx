@@ -1,23 +1,16 @@
 import "@theme-toggles/react/css/Around.css";
 import { Around } from "@theme-toggles/react";
-import React from "react";
 
 import { useTheme } from "@/hooks";
-import { cn } from "@/lib/utils";
 
-export const ToggleThemeButton: React.FC<{ className?: string }> = ({
-  className,
-}) => {
+export const ToggleThemeButton = () => {
   const { toggleTheme, isLight } = useTheme();
 
   return (
     <Around
-      className={cn(
-        "place-items-center shadow-md border-2 rounded-full transition-all cursor-pointer",
-        className
-      )}
-      onPointerEnterCapture={() => {}}
+      className="h-16 !ring-inset !ring !ring-border shadow-md !bg-background rounded-full aspect-square grid place-items-center"
       onPointerLeaveCapture={() => {}}
+      onPointerEnterCapture={() => {}}
       toggle={toggleTheme}
       toggled={isLight}
       duration={300}

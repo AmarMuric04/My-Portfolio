@@ -10,14 +10,6 @@ import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 import { Project } from "./Project";
 
-interface ProjectType {
-  techs: {
-    [category: string]: string[];
-  };
-  [key: string]: any;
-  title: string;
-}
-
 export default function ProjectList() {
   const [addingFilter, setAddingFilter] = useState<boolean>(false);
   const [showedProjects, setShowedProjects] = useState<Array<any>>([...WORK]);
@@ -116,7 +108,6 @@ export default function ProjectList() {
               initial={{ opacity: 0 }}
               exit={{ opacity: 0 }}
             >
-
               {/* Category Filter */}
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
@@ -245,9 +236,7 @@ export default function ProjectList() {
                 Not {tech}
                 <X
                   onClick={() =>
-                    setMustNotInclude(
-                      mustNotInclude.filter((t) => t !== tech)
-                    )
+                    setMustNotInclude(mustNotInclude.filter((t) => t !== tech))
                   }
                   className="w-3 h-3 cursor-pointer hover:opacity-70"
                 />
@@ -282,7 +271,7 @@ export default function ProjectList() {
           </div>
         )}
 
-        <ul className="flex flex-col gap-4 my-4">
+        <ul className="flex flex-col gap-4">
           {showedProjects.map((project) => (
             <Project project={project as any} key={project.title} />
           ))}
